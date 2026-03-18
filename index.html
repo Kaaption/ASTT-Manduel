@@ -556,6 +556,24 @@
         panel.style.maxHeight = '0';
       }
     }
+    function toggleReglement() {
+  const panel = document.getElementById('reglement-panel');
+  if (panel.style.maxHeight === '0px' || panel.style.maxHeight === '') {
+    panel.style.maxHeight = '80vh';
+    panel.style.overflowY = 'auto';
+  } else {
+    panel.style.maxHeight = '0';
+  }
+}
+function toggleMentions() {
+  const panel = document.getElementById('mentions-panel');
+  if (panel.style.maxHeight === '0px' || panel.style.maxHeight === '') {
+    panel.style.maxHeight = '80vh';
+    panel.style.overflowY = 'auto';
+  } else {
+    panel.style.maxHeight = '0';
+  }
+}
   </script>
 <body>
 
@@ -618,6 +636,188 @@
       </ul>
     </div>
 
+<!-- PANNEAU REGLEMENT -->
+<div id="reglement-panel" style="
+  position:fixed; top:70px; left:0; right:0;
+  background:white;
+  border-bottom: 3px solid var(--green-light);
+  box-shadow: 0 10px 40px rgba(0,0,0,.12);
+  z-index:99;
+  max-height:0; overflow:hidden; overflow-x:hidden;
+  transition: max-height .6s ease, padding .4s ease;
+  padding: 0 10%;
+">
+  <div style="padding: 3rem 0;">
+    <div class="section-tag">📜 Vie du club</div>
+    <h2 style="font-size:2rem; margin-bottom:2rem;">Règlement intérieur</h2>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; font-size:.92rem; color:var(--muted); line-height:1.85;">
+
+      <!-- COLONNE GAUCHE -->
+      <div>
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 1 – But du règlement</h3>
+        <p style="margin-bottom:1.5rem;">Le règlement précise le fonctionnement de l'ASTT Manduel. Il est remis à chaque adhérent lors de la prise de licence. Toute modification sera notifiée aux adhérents. Il est consultable au bureau du club et sur le site internet.</p>
+
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 2 – Respect du règlement</h3>
+        <p style="margin-bottom:1.5rem;">L'inscription au club vaut acceptation des statuts et du règlement. Toute violation pourra faire l'objet de sanctions par le bureau directeur.</p>
+
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 3 – Bureau directeur</h3>
+        <p style="margin-bottom:1.5rem;">Élu tous les 4 ans en assemblée générale. Tout adhérent peut poser sa candidature (hors salariés et prestataires).</p>
+
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 4 – Modalités d'inscription</h3>
+        <p style="margin-bottom:.5rem;">Toute personne doit posséder une licence FFTT. Fournir :</p>
+        <ul style="padding-left:1.2rem; margin-bottom:1.5rem;">
+          <li>Adultes : certificat médical valable 3 ans + questionnaire de santé signé chaque saison.</li>
+          <li>Mineurs : questionnaire de santé signé par les parents chaque saison.</li>
+          <li>Fiche d'inscription complétée.</li>
+          <li>Mineurs compétition : fiche d'autorisation d'intervention 1ers secours.</li>
+          <li>Paiement de la cotisation complète à l'inscription (possibilité de 4 chèques échelonnés).</li>
+        </ul>
+
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 5 – La cotisation</h3>
+        <p style="margin-bottom:.5rem;">Forfait comprenant : part fédérale, part ligue, part comité, part d'adhésion au club. Aucun remboursement ne sera effectué.</p>
+        <ul style="padding-left:1.2rem; margin-bottom:1.5rem;">
+          <li>Licence <strong>compétition</strong> : obligatoire avant la 1ère journée de championnat.</li>
+          <li>Licences <strong>loisirs</strong> et <strong>adaptée</strong> : obligatoire après 2 séances d'essai.</li>
+          <li>Réajustement en cas de basculement loisir → compétition en cours de saison.</li>
+        </ul>
+
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 6 – La salle et le matériel</h3>
+        <ul style="padding-left:1.2rem; margin-bottom:1.5rem;">
+          <li>Interdit de fumer dans l'enceinte du club.</li>
+          <li>Interdit de manger ou boire (boissons sucrées/alcoolisées) dans les aires de jeu.</li>
+          <li>Le matériel doit être respecté. Le robot uniquement avec une personne autorisée.</li>
+          <li>La salle doit être montée et rangée avant/après chaque entraînement et compétition (samedis 13h15, dimanches 8h).</li>
+          <li>Interdit aux moins de 15 ans de déplacer les tables sans adulte.</li>
+          <li>Balles ramassées et déchets jetés après chaque séance.</li>
+          <li>Gestion des clés : président du club. Interdiction de dupliquer ou prêter sans accord.</li>
+        </ul>
+
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 7 – Fréquentation de la salle</h3>
+        <p style="margin-bottom:.5rem;">Sont autorisés : adhérents, familles participant à une compétition, joueurs hors club ayant payé la cotisation, personnes extérieures invitées avec accord du bureau.</p>
+        <p style="margin-bottom:1.5rem;">La salle est fermée les jours fériés (sauf tournois), pendant les vacances de Noël, et du 14 juillet au 15 août.</p>
+      </div>
+
+      <!-- COLONNE DROITE -->
+      <div>
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 8 – Tenue sportive</h3>
+        <p style="margin-bottom:1.5rem;">Tenue sportive obligatoire (short, t-shirt, jogging, chaussures d'intérieur propres). En compétition par équipe : port du maillot du club obligatoire. Douches interdites en semaine.</p>
+
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 9 – Club house et bureaux</h3>
+        <p style="margin-bottom:1.5rem;">Le matériel de restauration est à disposition. Les lieux doivent rester propres et rangés. L'ordinateur est réservé aux personnes désignées par le bureau. La consommation d'alcool est uniquement autorisée lors des pots de l'amitié après compétitions ou tournois.</p>
+
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 10 – Internet</h3>
+        <p style="margin-bottom:1.5rem;">Site : <strong>www.astt-manduel.fr</strong> · Mail : <strong>club@astt-manduel.fr</strong><br>Les infos sont disponibles sur le panneau de la salle, le site internet et les groupes WhatsApp. L'adhérent s'engage à consulter régulièrement ses messages.</p>
+
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 11 – Assurance, vols et dégradations</h3>
+        <p style="margin-bottom:1.5rem;">La licence couvre les joueurs en cas d'accident (assurance FFTT). Des assurances complémentaires restent possibles. L'ASTT Manduel ne peut être tenue responsable des vols ou dégradations d'effets personnels.</p>
+
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 12 – Les compétitions</h3>
+        <p style="margin-bottom:.5rem;">Le bureau désigne les capitaines d'équipe. Le joueur doit :</p>
+        <ul style="padding-left:1.2rem; margin-bottom:1.5rem;">
+          <li>Participer aux compétitions pour lesquelles il s'est inscrit.</li>
+          <li>Prévenir le capitaine le plus tôt possible en cas d'absence.</li>
+          <li>Respecter les règles et avoir l'esprit sportif.</li>
+          <li>Donner une bonne image du club (accueil, respect de l'adversaire, de l'arbitre).</li>
+          <li>Chaque parent s'engage à assurer plusieurs déplacements.</li>
+        </ul>
+
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 13 – Les séances dirigées</h3>
+        <p style="margin-bottom:1.5rem;">Entraîneur rémunéré : carte professionnelle obligatoire. Entraîneur bénévole : diplôme minimum (initiateur de club). Brevet d'état : cotisation gratuite. Pas de séances dirigées pendant les vacances scolaires (stages possibles si intervenant diplômé). Mercredis limités à 40 enfants pour 2 éducateurs.</p>
+
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 14 – Les déplacements</h3>
+        <p style="margin-bottom:1.5rem;">Hors département : remboursement péages et essence au-delà de 100 km aller. Dans le département : document cerfa disponible sur demande pour déduction fiscale.</p>
+
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 15 – Sécurité</h3>
+        <p style="margin-bottom:1.5rem;">Les représentants légaux des mineurs doivent s'assurer de la présence de l'entraîneur. En dehors des entraînements, les mineurs restent sous la responsabilité de leurs représentants légaux.</p>
+
+        <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 16 – Les sanctions</h3>
+        <p style="margin-bottom:.5rem;">Sanctions possibles : avertissement, exclusion temporaire ou définitive. Motifs : comportement antisportif, dégradations, propos injurieux, actions portant préjudice au club.</p>
+        <p style="margin-bottom:1.5rem;">Les amendes dues à des manquements au règlement fédéral (cartons jaunes/rouges) sont à la charge des joueurs. Aucun remboursement en cas d'exclusion.</p>
+
+        <p style="font-size:.8rem; color:var(--muted); font-style:italic; border-top:1px solid #e5e7eb; padding-top:1rem;">
+          Association régie par la loi du 01.07.1901 – JO n° 586 du 10.07.2001<br>
+          Récépissé de Déclaration n° W302003021
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PANNEAU MENTIONS LEGALES -->
+<div id="mentions-panel" style="
+position:fixed; top:70px; left:0; right:0;
+background:white;
+border-bottom: 3px solid var(--green-light);
+box-shadow: 0 10px 40px rgba(0,0,0,.12);
+z-index:99;
+max-height:0; overflow:hidden; overflow-x:hidden;
+transition: max-height .6s ease, padding .4s ease;
+padding: 0 10%;
+">
+<div style="padding: 3rem 0; max-width: 800px; margin: 0 auto;">
+  <div class="section-tag">⚖️ Informations légales</div>
+  <h2 style="font-size:2rem; margin-bottom:2rem;">Mentions légales</h2>
+
+  <div style="display:flex; flex-direction:column; gap:1.5rem; font-size:.95rem; color:var(--muted); line-height:1.85;">
+
+    <div style="background:var(--green-pale); border-left:4px solid var(--green-mid); border-radius:0 12px 12px 0; padding:1.2rem 1.5rem;">
+      <p style="font-weight:700; color:var(--text); margin-bottom:.4rem;">🏢 Siège social</p>
+      <p>Association Sportive de Tennis de Table Manduel <strong>« ASTT MANDUEL »</strong><br>
+      2A Rue Beausoleil – 30129 Manduel</p>
+    </div>
+
+    <div style="background:var(--green-pale); border-left:4px solid var(--green-mid); border-radius:0 12px 12px 0; padding:1.2rem 1.5rem;">
+      <p style="font-weight:700; color:var(--text); margin-bottom:.4rem;">📬 Secrétariat & Correspondance</p>
+      <p>
+        Tél. : <strong>07 82 94 18 67</strong> ou <strong>06 77 27 83 40</strong><br>
+        E-mail : <a href="mailto:club@astt-manduel.fr" style="color:var(--green-mid); font-weight:600;">club@astt-manduel.fr</a>
+      </p>
+    </div>
+
+    <div style="background:var(--green-pale); border-left:4px solid var(--green-mid); border-radius:0 12px 12px 0; padding:1.2rem 1.5rem;">
+      <p style="font-weight:700; color:var(--text); margin-bottom:.4rem;">📍 Adresse de la salle</p>
+      <p>1789 Chemin de St Paul – 30129 Manduel</p>
+    </div>
+
+    <div style="background:var(--green-pale); border-left:4px solid var(--green-mid); border-radius:0 12px 12px 0; padding:1.2rem 1.5rem;">
+      <p style="font-weight:700; color:var(--text); margin-bottom:.4rem;">🔢 Numéro SIRET</p>
+      <p><strong>479 523 656 00011</strong></p>
+    </div>
+
+    <p style="font-size:.8rem; font-style:italic; border-top:1px solid #e5e7eb; padding-top:1rem;">
+      Association régie par la loi du 01.07.1901 – JO n° 586 du 10.07.2001 · Récépissé de Déclaration n° W302003021
+    </p>
+
+  </div>
+</div>
+
+<div style="text-align:center; padding-bottom:1.5rem;">
+  <button onclick="toggleMentions()" style="
+    background:none; border:2px solid var(--green-light);
+    padding:8px 24px; border-radius:50px;
+    font-family:'DM Sans',sans-serif; font-weight:600;
+    cursor:pointer; color:var(--text);
+    transition: background .2s;
+  " onmouseover="this.style.background='var(--green-pale)'" onmouseout="this.style.background='none'">
+    ✕ Fermer
+  </button>
+</div>
+</div>
+
+  <div style="text-align:center; padding-bottom:1.5rem;">
+    <button onclick="toggleReglement()" style="
+      background:none; border:2px solid var(--green-light);
+      padding:8px 24px; border-radius:50px;
+      font-family:'DM Sans',sans-serif; font-weight:600;
+      cursor:pointer; color:var(--text);
+      transition: background .2s;
+    " onmouseover="this.style.background='var(--green-pale)'" onmouseout="this.style.background='none'">
+      ✕ Fermer
+    </button>
+  </div>
+</div>
+
   </div>
 
   <!-- Bouton fermer -->
@@ -642,6 +842,8 @@
     <li><a href="#activites">Activités</a></li>
     <li><a href="#horaires">Horaires</a></li>
     <li><a href="#" onclick="togglePalmares(); return false;">Palmarès</a></li>
+    <li><a href="#" onclick="toggleReglement(); return false;">Règlement</a></li>
+    <li><a href="#" onclick="toggleMentions(); return false;">Mentions légales</a></li>
     <li><a href="#contact" class="nav-cta">Nous rejoindre</a></li>
   </ul>
 </nav>
