@@ -545,7 +545,94 @@
     }
   </style>
 </head>
+<script>
+    function togglePalmares() {
+      const panel = document.getElementById('palmares-panel');
+      if (panel.style.maxHeight === '0px' || panel.style.maxHeight === '') {
+        panel.style.maxHeight = '80vh';
+        panel.style.overflowY = 'auto';
+        panel.style.padding = '0 10%';
+      } else {
+        panel.style.maxHeight = '0';
+      }
+    }
+  </script>
 <body>
+
+<!-- PANNEAU PALMARES -->
+<div id="palmares-panel" style="
+  position:fixed; top:70px; left:0; right:0;
+  background:white;
+  border-bottom: 3px solid var(--green-light);
+  box-shadow: 0 10px 40px rgba(0,0,0,.12);
+  z-index:99;
+  max-height:0; overflow:hidden; overflow-x:hidden;
+  transition: max-height .6s ease, padding .4s ease;
+  padding: 0 10%;
+">
+<div style="padding: 3rem 0; display:grid; grid-template-columns:1fr 1fr; gap:4rem;">
+    <!-- HISTORIQUE -->
+    <div>
+      <div class="section-tag">📖 Notre histoire</div>
+      <h2 style="font-size:2rem; margin-bottom:1.5rem;">Historique</h2>
+
+      <p style="font-weight:700; color:var(--text); margin-bottom:1rem;">🗓️ Création de l'association</p>
+      <p style="color:var(--muted); margin-bottom:1.5rem; line-height:1.8;">
+        Fondée le <strong>10 juillet 2001</strong> par <strong>Simone SALETÈS</strong> et <strong>Pierre MARTIN</strong>.
+      </p>
+
+      <p style="font-weight:700; color:var(--text); margin-bottom:1rem;">👤 Les Présidents</p>
+      <ul style="list-style:none; padding:0; color:var(--muted); line-height:2.2;">
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2001–2003</span> Pierre MARTIN</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2003–2008</span> Ludovic GUIOT</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2008–2010</span> Alain AVESQUE</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2010–2013</span> Jean-Michel HEISSAT</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2013–2024</span> Ludovic GUIOT</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2025–auj.</span> Olivier CARRERAS</li>
+      </ul>
+    </div>
+
+    <!-- PALMARES -->
+    <div>
+      <div class="section-tag">🏆 Nos titres</div>
+      <h2 style="font-size:2rem; margin-bottom:1.5rem;">Palmarès par équipe</h2>
+      <ul style="list-style:none; padding:0; color:var(--muted); line-height:2.1; font-size:.92rem;">
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2006–07</span> Coupe du Fair-Play</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2007–08</span> Accession en D1 du Gard</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2008–09</span> Accession en Régionale 3</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2009–10</span> Vainqueur Coupe Vétéran</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2010–11</span> Vainqueur Coupe Vétéran</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2011–12</span> Vainqueur Coupe CS · Accession Régionale 3</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2012–13</span> Vainqueur Coupe Vétéran</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2014–15</span> Vainqueur Coupe CS</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2015–16</span> Accession en D2 du Gard</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2016–17</span> Accession Régionale 3 & D1 du Gard</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2017–18</span> Accession en Régionale 2</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2018–19</span> Accession en D1 & D2 du Gard</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2019–20</span> Accession Régionale 4</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2020–21</span> 🏅 Obtention des Labels FFTT</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2021–22</span> 🥇 Champion du Gard D1 & D2 · Championnat jeunes</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2022–23</span> 🥇 Champion du Gard D2 jeunes · Champion sénior D1 · Accession Régionale 4</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2023–24</span> 🥇 Champion du Gard D1 · Accession en D1</li>
+        <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2024–25</span> 🥇 Champion du Gard D2 & D3 jeunes · Accession Régionale 2 · Accession 2 équipes en D2 · Vainqueur –13 ans Challenge R.Gatien · Vainqueur Finales classement dép. H12</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bouton fermer -->
+  <div style="text-align:center; padding-bottom:1.5rem;">
+    <button onclick="togglePalmares()" style="
+      background:none; border:2px solid var(--green-light);
+      padding:8px 24px; border-radius:50px;
+      font-family:'DM Sans',sans-serif; font-weight:600;
+      cursor:pointer; color:var(--text);
+      transition: background .2s;
+    " onmouseover="this.style.background='var(--green-pale)'" onmouseout="this.style.background='none'">
+      ✕ Fermer
+    </button>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -554,6 +641,7 @@
     <li><a href="#about">Le club</a></li>
     <li><a href="#activites">Activités</a></li>
     <li><a href="#horaires">Horaires</a></li>
+    <li><a href="#" onclick="togglePalmares(); return false;">Palmarès</a></li>
     <li><a href="#contact" class="nav-cta">Nous rejoindre</a></li>
   </ul>
 </nav>
@@ -738,7 +826,7 @@
   <div class="contact-info">
     <div class="section-tag">Nous contacter</div>
     <h2>Rejoignez l'aventure !</h2>
-    <p>Une question ? Envie de venir essayer ? N'hésitez pas à nous contacter, une première séance d'essai est offerte pour les nouveaux venus.</p>
+    <p>Une question ? Envie de venir essayer ? N'hésitez pas à nous contacter !</p>
     <div class="contact-details">
       <div class="contact-detail">
         <div class="contact-detail-icon">📍</div>
@@ -763,7 +851,7 @@
       <h2 style="margin-bottom:1.5rem;">Nous rejoindre</h2>
   
       <p style="color:var(--green-dark); font-weight:600; margin-bottom:1.5rem;">
-        🎾 2 séances d'essai vous sont proposées.
+        2 séances d'essai vous sont proposées.
       </p>
   
       <p style="font-weight:600; margin-bottom:.75rem;">Pour une première adhésion, fournir <u>impérativement</u> :</p>
