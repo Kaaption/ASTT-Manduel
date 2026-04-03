@@ -5,600 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ASTT Manduel – Club de Tennis de Table</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --white: #ffffff;
-      --green-light: #7ed957;
-      --green-mid: #5dbf34;
-      --green-pale: #e8f9dc;
-      --green-dark: #2d6e0f;
-      --gray: #f4f4f2;
-      --text: #1a1a1a;
-      --muted: #6b7280;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--white);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 5%;
-      height: 70px;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 2px solid var(--green-light);
-    }
-
-    .logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 2px;
-      color: var(--text);
-    }
-    .logo span { color: var(--green-mid); }
-
-    nav ul {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-    nav ul a {
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--text);
-      position: relative;
-      padding-bottom: 3px;
-      transition: color .2s;
-    }
-    nav ul a::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: 0;
-      width: 0; height: 2px;
-      background: var(--green-light);
-      transition: width .3s ease;
-    }
-    nav ul a:hover { color: var(--green-mid); }
-    nav ul a:hover::after { width: 100%; }
-
-    .nav-cta {
-      background: var(--green-light);
-      color: var(--text) !important;
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-weight: 600 !important;
-      transition: background .2s, transform .15s !important;
-    }
-    .nav-cta:hover { background: var(--green-mid) !important; transform: translateY(-2px); }
-    .nav-cta::after { display: none !important; }
-
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding-top: 70px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 6% 8% 6% 10%;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      background: var(--green-pale);
-      color: var(--green-dark);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 50px;
-      margin-bottom: 1.5rem;
-      width: fit-content;
-      animation: fadeUp .6s ease both;
-    }
-
-    h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.5rem, 6vw, 6rem);
-      line-height: 1;
-      letter-spacing: 2px;
-      animation: fadeUp .7s .1s ease both;
-    }
-    h1 .accent { color: var(--green-mid); }
-
-    .hero-sub {
-      margin-top: 1.5rem;
-      font-size: 1.05rem;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 420px;
-      animation: fadeUp .7s .2s ease both;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2.5rem;
-      animation: fadeUp .7s .3s ease both;
-    }
-
-    .btn-primary {
-      background: var(--green-light);
-      color: var(--text);
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 0 4px 20px rgba(126,217,87,.35);
-    }
-    .btn-primary:hover {
-      background: var(--green-mid);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 28px rgba(126,217,87,.45);
-    }
-
-    .btn-outline {
-      border: 2px solid var(--green-light);
-      color: var(--text);
-      padding: 12px 28px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: background .2s, transform .15s;
-    }
-    .btn-outline:hover { background: var(--green-pale); transform: translateY(-3px); }
-
-    .hero-stats {
-      display: flex;
-      gap: 2.5rem;
-      margin-top: 3rem;
-      animation: fadeUp .7s .4s ease both;
-    }
-    .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.4rem;
-      color: var(--green-mid);
-      line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.78rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 600;
-    }
-
-    .hero-right {
-      background: var(--green-pale);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      animation: fadeIn .8s .2s ease both;
-    }
-
-    .hero-right::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 60% 40%, rgba(126,217,87,.4) 0%, transparent 70%);
-    }
-
-    .ping-pong-graphic {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-    }
-
-    .big-ball {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #ffffff 30%, #e0f7cc 100%);
-      box-shadow: 0 20px 60px rgba(0,0,0,.1), inset -15px -15px 30px rgba(126,217,87,.25);
-      margin: 0 auto 2rem;
-      position: relative;
-      animation: float 3s ease-in-out infinite;
-    }
-    .big-ball::after {
-      content: '';
-      position: absolute;
-      top: 35px; left: 30px;
-      width: 40px; height: 20px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.7);
-      transform: rotate(-30deg);
-    }
-
-    .paddle-svg {
-      width: 120px;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,.12));
-      animation: swing 4s ease-in-out infinite;
-      transform-origin: 60% 90%;
-    }
-
-    .deco-circle {
-      position: absolute;
-      border-radius: 50%;
-      border: 2px solid var(--green-light);
-      opacity: .3;
-    }
-    .deco-circle-1 { width: 300px; height: 300px; top: 10%; right: -80px; }
-    .deco-circle-2 { width: 180px; height: 180px; bottom: 15%; left: 10%; }
-    .deco-circle-3 { width: 80px; height: 80px; top: 55%; right: 20%; }
-
-    /* ── SECTION SHARED ── */
-    section { padding: 6rem 10%; }
-
-    .section-tag {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--green-mid);
-      margin-bottom: .75rem;
-    }
-
-    h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.2rem, 4vw, 3.5rem);
-      letter-spacing: 1.5px;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-intro {
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.8;
-      max-width: 550px;
-    }
-
-    /* ── ABOUT ── */
-    #about {
-      background: var(--gray);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .about-img {
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, var(--green-pale) 0%, var(--white) 100%);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,.08);
-    }
-
-    .about-icon {
-      font-size: 8rem;
-      opacity: .2;
-    }
-    .about-badge {
-      position: absolute;
-      bottom: 20px; right: 20px;
-      background: var(--green-mid);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.85rem;
-    }
-
-    .about-text p {
-      color: var(--muted);
-      line-height: 1.85;
-      margin-bottom: 1rem;
-    }
-
-    .values-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-    .value-item {
-      background: var(--white);
-      padding: 1rem 1.2rem;
-      border-radius: 12px;
-      border-left: 4px solid var(--green-light);
-    }
-    .value-item strong { display: block; font-size: .9rem; margin-bottom: .2rem; }
-    .value-item span { font-size: .8rem; color: var(--muted); }
-
-    /* ── ACTIVITÉS ── */
-    #activites { background: var(--white); }
-
-    .act-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 3rem;
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .card {
-      border-radius: 20px;
-      padding: 2rem;
-      transition: transform .25s, box-shadow .25s;
-      position: relative;
-      overflow: hidden;
-    }
-    .card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,.1); }
-
-    .card-1 { background: var(--green-pale); }
-    .card-2 { background: var(--green-light); }
-    .card-3 { background: var(--green-pale); }
-
-    .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-    .card h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.6rem;
-      letter-spacing: 1px;
-      margin-bottom: .75rem;
-    }
-    .card p { font-size: .9rem; color: var(--text); line-height: 1.7; opacity: .8; }
-
-    .card-deco {
-      position: absolute;
-      bottom: -20px; right: -20px;
-      font-size: 5rem;
-      opacity: .07;
-    }
-
-    /* ── HORAIRES ── */
-    #horaires {
-      background: var(--text);
-      color: white;
-    }
-    #horaires .section-tag { color: var(--green-light); }
-    #horaires h2 { color: white; }
-    #horaires .section-intro { color: rgba(255,255,255,.6); }
-
-    .horaires-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 3rem;
-    }
-
-    .horaire-card {
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(126,217,87,.2);
-      border-radius: 16px;
-      padding: 1.5rem;
-      transition: background .2s, border-color .2s;
-    }
-    .horaire-card:hover {
-      background: rgba(126,217,87,.1);
-      border-color: var(--green-light);
-    }
-
-    .horaire-jour {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 1px;
-      color: var(--green-light);
-      margin-bottom: .5rem;
-    }
-    .horaire-detail { font-size: .85rem; color: rgba(255,255,255,.7); line-height: 1.7; }
-    .horaire-detail strong { color: white; }
-
-    /* ── CONTACT ── */
-    #contact {
-      background: var(--gray);
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .contact-info h2 { margin-bottom: 1rem; }
-    .contact-info p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
-
-    .contact-details { display: flex; flex-direction: column; gap: .9rem; }
-    .contact-detail {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-size: .95rem;
-    }
-    .contact-detail-icon {
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      background: var(--green-light);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .contact-form {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 2.5rem;
-      box-shadow: 0 10px 40px rgba(0,0,0,.07);
-    }
-    .contact-form h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 1px;
-      margin-bottom: 1.5rem;
-    }
-
-    .form-group { margin-bottom: 1.2rem; }
-    .form-group label {
-      display: block;
-      font-size: .8rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: .4rem;
-    }
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 16px;
-      border: 2px solid #e5e7eb;
-      border-radius: 10px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: .95rem;
-      color: var(--text);
-      background: var(--white);
-      transition: border-color .2s;
-      outline: none;
-      resize: vertical;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus { border-color: var(--green-light); }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-    .btn-submit {
-      width: 100%;
-      background: var(--green-light);
-      border: none;
-      padding: 14px;
-      border-radius: 50px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background .2s, transform .15s;
-      box-shadow: 0 4px 20px rgba(126,217,87,.3);
-    }
-    .btn-submit:hover { background: var(--green-mid); transform: translateY(-2px); }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--text);
-      color: rgba(255,255,255,.5);
-      text-align: center;
-      padding: 2rem 10%;
-      font-size: .85rem;
-    }
-    footer span { color: var(--green-light); }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; } to { opacity: 1; }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-18px); }
-    }
-    @keyframes swing {
-      0%, 100% { transform: rotate(-8deg); }
-      50%       { transform: rotate(8deg); }
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      #hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-right { min-height: 350px; }
-      #about, #contact { grid-template-columns: 1fr; }
-      .cards-grid { grid-template-columns: 1fr; }
-      nav ul { display: none; }
-      .act-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<script>
-    function togglePalmares() {
-      const panel = document.getElementById('palmares-panel');
-      if (panel.style.maxHeight === '0px' || panel.style.maxHeight === '') {
-        panel.style.maxHeight = '80vh';
-        panel.style.overflowY = 'auto';
-        panel.style.padding = '0 10%';
-      } else {
-        panel.style.maxHeight = '0';
-      }
-    }
-    function toggleReglement() {
-  const panel = document.getElementById('reglement-panel');
-  if (panel.style.maxHeight === '0px' || panel.style.maxHeight === '') {
-    panel.style.maxHeight = '80vh';
-    panel.style.overflowY = 'auto';
-  } else {
-    panel.style.maxHeight = '0';
-  }
-}
-function toggleMentions() {
-  const panel = document.getElementById('mentions-panel');
-  if (panel.style.maxHeight === '0px' || panel.style.maxHeight === '') {
-    panel.style.maxHeight = '80vh';
-    panel.style.overflowY = 'auto';
-  } else {
-    panel.style.maxHeight = '0';
-  }
-}
-  </script>
 <body>
-
-<!-- PANNEAU PALMARES -->
-<div id="palmares-panel" style="
-  position:fixed; top:70px; left:0; right:0;
-  background:white;
-  border-bottom: 3px solid var(--green-light);
-  box-shadow: 0 10px 40px rgba(0,0,0,.12);
-  z-index:99;
-  max-height:0; overflow:hidden; overflow-x:hidden;
-  transition: max-height .6s ease, padding .4s ease;
-  padding: 0 10%;
-">
-<div style="padding: 3rem 0; display:grid; grid-template-columns:1fr 1fr; gap:4rem;">
-    <!-- HISTORIQUE -->
+ 
+<!-- ══════════════════════════════════════════
+     PANNEAU PALMARÈS
+     ══════════════════════════════════════════ -->
+<div id="palmares-panel" class="panel">
+  <div class="panel-inner" style="display:grid; grid-template-columns:1fr 1fr; gap:4rem;">
+ 
+    <!-- Historique -->
     <div>
       <div class="section-tag">📖 Notre histoire</div>
       <h2 style="font-size:2rem; margin-bottom:1.5rem;">Historique</h2>
-
+ 
       <p style="font-weight:700; color:var(--text); margin-bottom:1rem;">🗓️ Création de l'association</p>
       <p style="color:var(--muted); margin-bottom:1.5rem; line-height:1.8;">
         Fondée le <strong>10 juillet 2001</strong> par <strong>Simone SALETÈS</strong> et <strong>Pierre MARTIN</strong>.
       </p>
-
+ 
       <p style="font-weight:700; color:var(--text); margin-bottom:1rem;">👤 Les Présidents</p>
       <ul style="list-style:none; padding:0; color:var(--muted); line-height:2.2;">
         <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2001–2003</span> Pierre MARTIN</li>
@@ -609,8 +35,8 @@ function toggleMentions() {
         <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2025–auj.</span> Olivier CARRERAS</li>
       </ul>
     </div>
-
-    <!-- PALMARES -->
+ 
+    <!-- Palmarès -->
     <div>
       <div class="section-tag">🏆 Nos titres</div>
       <h2 style="font-size:2rem; margin-bottom:1.5rem;">Palmarès par équipe</h2>
@@ -635,35 +61,34 @@ function toggleMentions() {
         <li><span style="color:var(--green-mid); font-weight:700; margin-right:.75rem;">2024–25</span> 🥇 Champion du Gard D2 & D3 jeunes · Accession Régionale 2 · Accession 2 équipes en D2 · Vainqueur –13 ans Challenge R.Gatien · Vainqueur Finales classement dép. H12</li>
       </ul>
     </div>
-
-<!-- PANNEAU REGLEMENT -->
-<div id="reglement-panel" style="
-  position:fixed; top:70px; left:0; right:0;
-  background:white;
-  border-bottom: 3px solid var(--green-light);
-  box-shadow: 0 10px 40px rgba(0,0,0,.12);
-  z-index:99;
-  max-height:0; overflow:hidden; overflow-x:hidden;
-  transition: max-height .6s ease, padding .4s ease;
-  padding: 0 10%;
-">
-  <div style="padding: 3rem 0;">
+ 
+  </div>
+  <div style="text-align:center; padding-bottom:1.5rem;">
+    <button class="panel-close-btn" onclick="togglePanel('palmares-panel')">✕ Fermer</button>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     PANNEAU RÈGLEMENT
+     ══════════════════════════════════════════ -->
+<div id="reglement-panel" class="panel">
+  <div class="panel-inner">
     <div class="section-tag">📜 Vie du club</div>
     <h2 style="font-size:2rem; margin-bottom:2rem;">Règlement intérieur</h2>
-
+ 
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; font-size:.92rem; color:var(--muted); line-height:1.85;">
-
-      <!-- COLONNE GAUCHE -->
+ 
+      <!-- Colonne gauche -->
       <div>
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 1 – But du règlement</h3>
         <p style="margin-bottom:1.5rem;">Le règlement précise le fonctionnement de l'ASTT Manduel. Il est remis à chaque adhérent lors de la prise de licence. Toute modification sera notifiée aux adhérents. Il est consultable au bureau du club et sur le site internet.</p>
-
+ 
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 2 – Respect du règlement</h3>
         <p style="margin-bottom:1.5rem;">L'inscription au club vaut acceptation des statuts et du règlement. Toute violation pourra faire l'objet de sanctions par le bureau directeur.</p>
-
+ 
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 3 – Bureau directeur</h3>
         <p style="margin-bottom:1.5rem;">Élu tous les 4 ans en assemblée générale. Tout adhérent peut poser sa candidature (hors salariés et prestataires).</p>
-
+ 
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 4 – Modalités d'inscription</h3>
         <p style="margin-bottom:.5rem;">Toute personne doit posséder une licence FFTT. Fournir :</p>
         <ul style="padding-left:1.2rem; margin-bottom:1.5rem;">
@@ -673,7 +98,7 @@ function toggleMentions() {
           <li>Mineurs compétition : fiche d'autorisation d'intervention 1ers secours.</li>
           <li>Paiement de la cotisation complète à l'inscription (possibilité de 4 chèques échelonnés).</li>
         </ul>
-
+ 
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 5 – La cotisation</h3>
         <p style="margin-bottom:.5rem;">Forfait comprenant : part fédérale, part ligue, part comité, part d'adhésion au club. Aucun remboursement ne sera effectué.</p>
         <ul style="padding-left:1.2rem; margin-bottom:1.5rem;">
@@ -681,7 +106,7 @@ function toggleMentions() {
           <li>Licences <strong>loisirs</strong> et <strong>adaptée</strong> : obligatoire après 2 séances d'essai.</li>
           <li>Réajustement en cas de basculement loisir → compétition en cours de saison.</li>
         </ul>
-
+ 
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 6 – La salle et le matériel</h3>
         <ul style="padding-left:1.2rem; margin-bottom:1.5rem;">
           <li>Interdit de fumer dans l'enceinte du club.</li>
@@ -692,26 +117,26 @@ function toggleMentions() {
           <li>Balles ramassées et déchets jetés après chaque séance.</li>
           <li>Gestion des clés : président du club. Interdiction de dupliquer ou prêter sans accord.</li>
         </ul>
-
+ 
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 7 – Fréquentation de la salle</h3>
         <p style="margin-bottom:.5rem;">Sont autorisés : adhérents, familles participant à une compétition, joueurs hors club ayant payé la cotisation, personnes extérieures invitées avec accord du bureau.</p>
         <p style="margin-bottom:1.5rem;">La salle est fermée les jours fériés (sauf tournois), pendant les vacances de Noël, et du 14 juillet au 15 août.</p>
       </div>
-
-      <!-- COLONNE DROITE -->
+ 
+      <!-- Colonne droite -->
       <div>
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 8 – Tenue sportive</h3>
         <p style="margin-bottom:1.5rem;">Tenue sportive obligatoire (short, t-shirt, jogging, chaussures d'intérieur propres). En compétition par équipe : port du maillot du club obligatoire. Douches interdites en semaine.</p>
-
+ 
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 9 – Club house et bureaux</h3>
         <p style="margin-bottom:1.5rem;">Le matériel de restauration est à disposition. Les lieux doivent rester propres et rangés. L'ordinateur est réservé aux personnes désignées par le bureau. La consommation d'alcool est uniquement autorisée lors des pots de l'amitié après compétitions ou tournois.</p>
-
+ 
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 10 – Internet</h3>
         <p style="margin-bottom:1.5rem;">Site : <strong>www.astt-manduel.fr</strong> · Mail : <strong>club@astt-manduel.fr</strong><br>Les infos sont disponibles sur le panneau de la salle, le site internet et les groupes WhatsApp. L'adhérent s'engage à consulter régulièrement ses messages.</p>
-
+ 
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 11 – Assurance, vols et dégradations</h3>
         <p style="margin-bottom:1.5rem;">La licence couvre les joueurs en cas d'accident (assurance FFTT). Des assurances complémentaires restent possibles. L'ASTT Manduel ne peut être tenue responsable des vols ou dégradations d'effets personnels.</p>
-
+ 
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 12 – Les compétitions</h3>
         <p style="margin-bottom:.5rem;">Le bureau désigne les capitaines d'équipe. Le joueur doit :</p>
         <ul style="padding-left:1.2rem; margin-bottom:1.5rem;">
@@ -721,141 +146,104 @@ function toggleMentions() {
           <li>Donner une bonne image du club (accueil, respect de l'adversaire, de l'arbitre).</li>
           <li>Chaque parent s'engage à assurer plusieurs déplacements.</li>
         </ul>
-
+ 
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 13 – Les séances dirigées</h3>
         <p style="margin-bottom:1.5rem;">Entraîneur rémunéré : carte professionnelle obligatoire. Entraîneur bénévole : diplôme minimum (initiateur de club). Brevet d'état : cotisation gratuite. Pas de séances dirigées pendant les vacances scolaires (stages possibles si intervenant diplômé). Mercredis limités à 40 enfants pour 2 éducateurs.</p>
-
+ 
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 14 – Les déplacements</h3>
         <p style="margin-bottom:1.5rem;">Hors département : remboursement péages et essence au-delà de 100 km aller. Dans le département : document cerfa disponible sur demande pour déduction fiscale.</p>
-
+ 
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 15 – Sécurité</h3>
         <p style="margin-bottom:1.5rem;">Les représentants légaux des mineurs doivent s'assurer de la présence de l'entraîneur. En dehors des entraînements, les mineurs restent sous la responsabilité de leurs représentants légaux.</p>
-
+ 
         <h3 style="color:var(--text); font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem;">Art. 16 – Les sanctions</h3>
         <p style="margin-bottom:.5rem;">Sanctions possibles : avertissement, exclusion temporaire ou définitive. Motifs : comportement antisportif, dégradations, propos injurieux, actions portant préjudice au club.</p>
         <p style="margin-bottom:1.5rem;">Les amendes dues à des manquements au règlement fédéral (cartons jaunes/rouges) sont à la charge des joueurs. Aucun remboursement en cas d'exclusion.</p>
-
+ 
         <p style="font-size:.8rem; color:var(--muted); font-style:italic; border-top:1px solid #e5e7eb; padding-top:1rem;">
           Association régie par la loi du 01.07.1901 – JO n° 586 du 10.07.2001<br>
           Récépissé de Déclaration n° W302003021
         </p>
       </div>
-
+ 
     </div>
   </div>
-
-  <!-- PANNEAU MENTIONS LEGALES -->
-<div id="mentions-panel" style="
-position:fixed; top:70px; left:0; right:0;
-background:white;
-border-bottom: 3px solid var(--green-light);
-box-shadow: 0 10px 40px rgba(0,0,0,.12);
-z-index:99;
-max-height:0; overflow:hidden; overflow-x:hidden;
-transition: max-height .6s ease, padding .4s ease;
-padding: 0 10%;
-">
-<div style="padding: 3rem 0; max-width: 800px; margin: 0 auto;">
-  <div class="section-tag">⚖️ Informations légales</div>
-  <h2 style="font-size:2rem; margin-bottom:2rem;">Mentions légales</h2>
-
-  <div style="display:flex; flex-direction:column; gap:1.5rem; font-size:.95rem; color:var(--muted); line-height:1.85;">
-
-    <div style="background:var(--green-pale); border-left:4px solid var(--green-mid); border-radius:0 12px 12px 0; padding:1.2rem 1.5rem;">
-      <p style="font-weight:700; color:var(--text); margin-bottom:.4rem;">🏢 Siège social</p>
-      <p>Association Sportive de Tennis de Table Manduel <strong>« ASTT MANDUEL »</strong><br>
-      2A Rue Beausoleil – 30129 Manduel</p>
-    </div>
-
-    <div style="background:var(--green-pale); border-left:4px solid var(--green-mid); border-radius:0 12px 12px 0; padding:1.2rem 1.5rem;">
-      <p style="font-weight:700; color:var(--text); margin-bottom:.4rem;">📬 Secrétariat & Correspondance</p>
-      <p>
-        Tél. : <strong>07 82 94 18 67</strong> ou <strong>06 77 27 83 40</strong><br>
-        E-mail : <a href="mailto:club@astt-manduel.fr" style="color:var(--green-mid); font-weight:600;">club@astt-manduel.fr</a>
+  <div style="text-align:center; padding-bottom:1.5rem;">
+    <button class="panel-close-btn" onclick="togglePanel('reglement-panel')">✕ Fermer</button>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     PANNEAU MENTIONS LÉGALES
+     ══════════════════════════════════════════ -->
+<div id="mentions-panel" class="panel">
+  <div class="panel-inner" style="max-width:800px; margin:0 auto;">
+    <div class="section-tag">⚖️ Informations légales</div>
+    <h2 style="font-size:2rem; margin-bottom:2rem;">Mentions légales</h2>
+ 
+    <div style="display:flex; flex-direction:column; gap:1.5rem; font-size:.95rem; color:var(--muted); line-height:1.85;">
+ 
+      <div style="background:var(--green-pale); border-left:4px solid var(--green-mid); border-radius:0 12px 12px 0; padding:1.2rem 1.5rem;">
+        <p style="font-weight:700; color:var(--text); margin-bottom:.4rem;">🏢 Siège social</p>
+        <p>Association Sportive de Tennis de Table Manduel <strong>« ASTT MANDUEL »</strong><br>
+        2A Rue Beausoleil – 30129 Manduel</p>
+      </div>
+ 
+      <div style="background:var(--green-pale); border-left:4px solid var(--green-mid); border-radius:0 12px 12px 0; padding:1.2rem 1.5rem;">
+        <p style="font-weight:700; color:var(--text); margin-bottom:.4rem;">📬 Secrétariat & Correspondance</p>
+        <p>
+          Tél. : <strong>07 82 94 18 67</strong> ou <strong>06 77 27 83 40</strong><br>
+          E-mail : <a href="mailto:club@astt-manduel.fr" style="color:var(--green-mid); font-weight:600;">club@astt-manduel.fr</a>
+        </p>
+      </div>
+ 
+      <div style="background:var(--green-pale); border-left:4px solid var(--green-mid); border-radius:0 12px 12px 0; padding:1.2rem 1.5rem;">
+        <p style="font-weight:700; color:var(--text); margin-bottom:.4rem;">📍 Adresse de la salle</p>
+        <p>1789 Chemin de St Paul – 30129 Manduel</p>
+      </div>
+ 
+      <div style="background:var(--green-pale); border-left:4px solid var(--green-mid); border-radius:0 12px 12px 0; padding:1.2rem 1.5rem;">
+        <p style="font-weight:700; color:var(--text); margin-bottom:.4rem;">🔢 Numéro SIRET</p>
+        <p><strong>479 523 656 00011</strong></p>
+      </div>
+ 
+      <p style="font-size:.8rem; font-style:italic; border-top:1px solid #e5e7eb; padding-top:1rem;">
+        Association régie par la loi du 01.07.1901 – JO n° 586 du 10.07.2001 · Récépissé de Déclaration n° W302003021
       </p>
+ 
     </div>
-
-    <div style="background:var(--green-pale); border-left:4px solid var(--green-mid); border-radius:0 12px 12px 0; padding:1.2rem 1.5rem;">
-      <p style="font-weight:700; color:var(--text); margin-bottom:.4rem;">📍 Adresse de la salle</p>
-      <p>1789 Chemin de St Paul – 30129 Manduel</p>
-    </div>
-
-    <div style="background:var(--green-pale); border-left:4px solid var(--green-mid); border-radius:0 12px 12px 0; padding:1.2rem 1.5rem;">
-      <p style="font-weight:700; color:var(--text); margin-bottom:.4rem;">🔢 Numéro SIRET</p>
-      <p><strong>479 523 656 00011</strong></p>
-    </div>
-
-    <p style="font-size:.8rem; font-style:italic; border-top:1px solid #e5e7eb; padding-top:1rem;">
-      Association régie par la loi du 01.07.1901 – JO n° 586 du 10.07.2001 · Récépissé de Déclaration n° W302003021
-    </p>
-
   </div>
-</div>
-
-<div style="text-align:center; padding-bottom:1.5rem;">
-  <button onclick="toggleMentions()" style="
-    background:none; border:2px solid var(--green-light);
-    padding:8px 24px; border-radius:50px;
-    font-family:'DM Sans',sans-serif; font-weight:600;
-    cursor:pointer; color:var(--text);
-    transition: background .2s;
-  " onmouseover="this.style.background='var(--green-pale)'" onmouseout="this.style.background='none'">
-    ✕ Fermer
-  </button>
-</div>
-</div>
-
   <div style="text-align:center; padding-bottom:1.5rem;">
-    <button onclick="toggleReglement()" style="
-      background:none; border:2px solid var(--green-light);
-      padding:8px 24px; border-radius:50px;
-      font-family:'DM Sans',sans-serif; font-weight:600;
-      cursor:pointer; color:var(--text);
-      transition: background .2s;
-    " onmouseover="this.style.background='var(--green-pale)'" onmouseout="this.style.background='none'">
-      ✕ Fermer
-    </button>
+    <button class="panel-close-btn" onclick="togglePanel('mentions-panel')">✕ Fermer</button>
   </div>
 </div>
-
-  </div>
-
-  <!-- Bouton fermer -->
-  <div style="text-align:center; padding-bottom:1.5rem;">
-    <button onclick="togglePalmares()" style="
-      background:none; border:2px solid var(--green-light);
-      padding:8px 24px; border-radius:50px;
-      font-family:'DM Sans',sans-serif; font-weight:600;
-      cursor:pointer; color:var(--text);
-      transition: background .2s;
-    " onmouseover="this.style.background='var(--green-pale)'" onmouseout="this.style.background='none'">
-      ✕ Fermer
-    </button>
-  </div>
-</div>
-
-<!-- NAV -->
+ 
+<!-- ══════════════════════════════════════════
+     NAV
+     ══════════════════════════════════════════ -->
 <nav>
   <div class="logo">ASTT <span>Manduel</span></div>
   <ul>
     <li><a href="#about">Le club</a></li>
     <li><a href="#activites">Activités</a></li>
     <li><a href="#horaires">Horaires</a></li>
-    <li><a href="#" onclick="togglePalmares(); return false;">Palmarès</a></li>
-    <li><a href="#" onclick="toggleReglement(); return false;">Règlement</a></li>
-    <li><a href="#" onclick="toggleMentions(); return false;">Mentions légales</a></li>
+    <li><a href="#" onclick="togglePanel('palmares-panel'); return false;">Palmarès</a></li>
+    <li><a href="#" onclick="togglePanel('reglement-panel'); return false;">Règlement</a></li>
+    <li><a href="#" onclick="togglePanel('mentions-panel'); return false;">Mentions légales</a></li>
     <li><a href="#contact" class="nav-cta">Nous rejoindre</a></li>
   </ul>
 </nav>
-
-<!-- HERO -->
+ 
+<!-- ══════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════ -->
 <section id="hero">
   <div class="hero-left">
     <div class="hero-tag">🏓 Club de Tennis de Table</div>
     <h1>ASTT<br><span class="accent">Manduel</span></h1>
     <p class="hero-sub">
-        Depuis sa création en 2001, notre association n’a jamais cessé de croître. Nous pouvons accueillir tout public valide ou non valide. Filles et garçons de tout âge. Joueurs compétiteurs et pour le plaisir. Les débutants sont les bienvenus. 
-        Nous proposons des séances dirigées à tous nos adhérents.
+      Depuis sa création en 2001, notre association n'a jamais cessé de croître. Nous pouvons accueillir tout public valide ou non valide. Filles et garçons de tout âge. Joueurs compétiteurs et pour le plaisir. Les débutants sont les bienvenus.
+      Nous proposons des séances dirigées à tous nos adhérents.
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Rejoindre le club</a>
@@ -894,17 +282,19 @@ padding: 0 10%;
     </div>
   </div>
 </section>
-
-<!-- ABOUT -->
+ 
+<!-- ══════════════════════════════════════════
+     LE CLUB
+     ══════════════════════════════════════════ -->
 <section id="about">
   <div class="about-img">
     <div class="about-icon">🏓</div>
-    <div class="about-badge">Depuis 1990</div>
+    <div class="about-badge">Depuis 2001</div>
   </div>
   <div class="about-text">
     <div class="section-tag">Notre histoire</div>
     <h2>Un club au cœur de Manduel</h2>
-    <p>L'Association Sportive de Tennis de Table de Manduel (ASTT Manduel) est un club familial fondé il y a plus de 30 ans. Implanté dans le Gard, nous accueillons joueurs de tous âges et de tous niveaux dans une ambiance chaleureuse et sportive.</p>
+    <p>L'Association Sportive de Tennis de Table de Manduel (ASTT Manduel) est un club familial fondé en 2001. Implanté dans le Gard, nous accueillons joueurs de tous âges et de tous niveaux dans une ambiance chaleureuse et sportive.</p>
     <p>Affilié à la Fédération Française de Tennis de Table (FFTT), le club participe aux championnats départementaux et régionaux avec plusieurs équipes engagées chaque saison.</p>
     <div class="values-grid">
       <div class="value-item">
@@ -926,8 +316,10 @@ padding: 0 10%;
     </div>
   </div>
 </section>
-
-<!-- ACTIVITÉS -->
+ 
+<!-- ══════════════════════════════════════════
+     ACTIVITÉS
+     ══════════════════════════════════════════ -->
 <section id="activites">
   <div class="act-header">
     <div>
@@ -940,7 +332,7 @@ padding: 0 10%;
     <div class="card card-1">
       <div class="card-icon">🎓</div>
       <h3>École de Ping</h3>
-      <p>Initiez vos enfants au tennis de table dès 6 ans. Nos éducateurs diplômés accompagnent les jeunes joueurs avec pédagogie et bonne humeur.</p>
+      <p>Initiez vos enfants au tennis de table dès 7 ans. Nos éducateurs diplômés accompagnent les jeunes joueurs avec pédagogie et bonne humeur.</p>
       <div class="card-deco">🏓</div>
     </div>
     <div class="card card-2">
@@ -957,73 +349,77 @@ padding: 0 10%;
     </div>
   </div>
 </section>
-
-<!-- HORAIRES -->
+ 
+<!-- ══════════════════════════════════════════
+     HORAIRES
+     ══════════════════════════════════════════ -->
 <section id="horaires">
-    <div class="section-tag">Organisation</div>
-    <h2>Horaires & Entraînements</h2>
-    <p class="section-intro">Nous nous retrouvons toute la semaine à la salle polyvalente de Manduel.</p>
-    <div class="horaires-grid">
-      <div class="horaire-card">
-        <div class="horaire-jour">Lundi</div>
-        <div class="horaire-detail">
-          <strong>Séance libre</strong><br>
-          20h00 – 22h00
-        </div>
-      </div>
-      <div class="horaire-card">
-        <div class="horaire-jour">Mardi</div>
-        <div class="horaire-detail">
-          <strong>Séance dirigée</strong><br>
-          19h30 – 21h15<br>
-          Adultes & +15 ans · Loisirs & Compétiteurs
-        </div>
-      </div>
-      <div class="horaire-card">
-        <div class="horaire-jour">Mercredi <span style="font-size:.7rem;opacity:.6">(hors vacances)</span></div>
-        <div class="horaire-detail">
-          <strong>Enfants (7–15 ans)</strong><br>
-          16h30 – 18h30<br><br>
-          <strong>Compétiteurs</strong><br>
-          20h30 – 22h00
-        </div>
-      </div>
-      <div class="horaire-card">
-        <div class="horaire-jour">Jeudi</div>
-        <div class="horaire-detail">
-          <strong>Séance libre ou dirigée</strong><br>
-          19h30 – 21h15<br>
-          Adultes & +15 ans · Loisirs & Compétiteurs
-        </div>
-      </div>
-      <div class="horaire-card">
-        <div class="horaire-jour">Vendredi</div>
-        <div class="horaire-detail">
-          <strong>Séance libre</strong><br>
-          17h00 – 19h00<br><br>
-          <strong>Séance dirigée – Jeunes compétiteurs</strong><br>
-          19h00 – 21h00
-        </div>
-      </div>
-      <div class="horaire-card">
-        <div class="horaire-jour">Samedi <span style="font-size:.7rem;opacity:.6">(hors vacances)</span></div>
-        <div class="horaire-detail">
-          <strong>Séance dirigée – Jeunes compétiteurs</strong><br>
-          15h30<br><br>
-          <strong>ou Compétitions enfants</strong><br>
-          13h30
-        </div>
-      </div>
-      <div class="horaire-card">
-        <div class="horaire-jour">Dimanche</div>
-        <div class="horaire-detail">
-          <strong>Compétitions adultes</strong>
-        </div>
+  <div class="section-tag">Organisation</div>
+  <h2>Horaires & Entraînements</h2>
+  <p class="section-intro">Nous nous retrouvons toute la semaine à la salle polyvalente de Manduel.</p>
+  <div class="horaires-grid">
+    <div class="horaire-card">
+      <div class="horaire-jour">Lundi</div>
+      <div class="horaire-detail">
+        <strong>Séance libre</strong><br>
+        20h00 – 22h00
       </div>
     </div>
-  </section>
-
-<!-- CONTACT -->
+    <div class="horaire-card">
+      <div class="horaire-jour">Mardi</div>
+      <div class="horaire-detail">
+        <strong>Séance dirigée</strong><br>
+        19h30 – 21h15<br>
+        Adultes & +15 ans · Loisirs & Compétiteurs
+      </div>
+    </div>
+    <div class="horaire-card">
+      <div class="horaire-jour">Mercredi <span style="font-size:.7rem;opacity:.6">(hors vacances)</span></div>
+      <div class="horaire-detail">
+        <strong>Enfants (7–15 ans)</strong><br>
+        16h30 – 18h30<br><br>
+        <strong>Compétiteurs</strong><br>
+        20h30 – 22h00
+      </div>
+    </div>
+    <div class="horaire-card">
+      <div class="horaire-jour">Jeudi</div>
+      <div class="horaire-detail">
+        <strong>Séance libre ou dirigée</strong><br>
+        19h30 – 21h15<br>
+        Adultes & +15 ans · Loisirs & Compétiteurs
+      </div>
+    </div>
+    <div class="horaire-card">
+      <div class="horaire-jour">Vendredi</div>
+      <div class="horaire-detail">
+        <strong>Séance libre</strong><br>
+        17h00 – 19h00<br><br>
+        <strong>Séance dirigée – Jeunes compétiteurs</strong><br>
+        19h00 – 21h00
+      </div>
+    </div>
+    <div class="horaire-card">
+      <div class="horaire-jour">Samedi <span style="font-size:.7rem;opacity:.6">(hors vacances)</span></div>
+      <div class="horaire-detail">
+        <strong>Séance dirigée – Jeunes compétiteurs</strong><br>
+        15h30<br><br>
+        <strong>ou Compétitions enfants</strong><br>
+        13h30
+      </div>
+    </div>
+    <div class="horaire-card">
+      <div class="horaire-jour">Dimanche</div>
+      <div class="horaire-detail">
+        <strong>Compétitions adultes</strong>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ══════════════════════════════════════════
+     CONTACT
+     ══════════════════════════════════════════ -->
 <section id="contact">
   <div class="contact-info">
     <div class="section-tag">Nous contacter</div>
@@ -1032,7 +428,7 @@ padding: 0 10%;
     <div class="contact-details">
       <div class="contact-detail">
         <div class="contact-detail-icon">📍</div>
-        <div>Salle polyvalente de Manduel<br><span style="color:var(--muted);font-size:.9rem">Manduel, 30129 – Gard</span></div>
+        <div>1789 Chemin de St Paul<br><span style="color:var(--muted);font-size:.9rem">30129 Manduel – Gard</span></div>
       </div>
       <div class="contact-detail">
         <div class="contact-detail-icon">📧</div>
@@ -1040,59 +436,86 @@ padding: 0 10%;
       </div>
       <div class="contact-detail">
         <div class="contact-detail-icon">📞</div>
-        <div>07 82 94 18 67 OU 06 77 27 83 40</div>
+        <div>07 82 94 18 67 ou 06 77 27 83 40</div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- INSCRIPTION -->
-<section id="inscription" style="background:var(--white); padding: 4rem 10%;">
-    <div style="max-width:750px; margin:0 auto; background:var(--green-pale); border-radius:24px; padding:2.5rem; border-left: 6px solid var(--green-mid);">
-      <div class="section-tag">📋 Modalités d'inscription</div>
-      <h2 style="margin-bottom:1.5rem;">Nous rejoindre</h2>
-  
-      <p style="color:var(--green-dark); font-weight:600; margin-bottom:1.5rem;">
-        2 séances d'essai vous sont proposées.
-      </p>
-  
-      <p style="font-weight:600; margin-bottom:.75rem;">Pour une première adhésion, fournir <u>impérativement</u> :</p>
-      <ul style="color:var(--muted); line-height:2; padding-left:1.2rem; margin-bottom:1.5rem;">
-        <li>Pour les <strong>+40 ans</strong> : certificat médical d'aptitude à la pratique du tennis de table en compétition.</li>
-        <li>Pour les <strong>mineurs et -40 ans</strong> : questionnaire de santé fourni par le club.</li>
-        <li>Vos coordonnées : téléphone, adresse, email.</li>
-        <li>Votre date et lieu de naissance.</li>
-        <li>Chaussures de sport propres.</li>
-        <li>Pour la compétition : une raquette réglementée FFTT.</li>
-      </ul>
-  
-      <p style="font-weight:600; margin-bottom:.75rem;">💰 Affiliation FFTT & assurance :</p>
-      <ul style="color:var(--muted); line-height:2; padding-left:1.2rem; margin-bottom:1.5rem;">
-        <li>Loisirs adultes & enfants (7–18 ans) : <strong>110 €</strong></li>
-        <li>Compétition : <strong>140 €</strong> ou <strong>170 €</strong> (avec maillot)</li>
-        <li>Tournois départementaux : <strong>20 €</strong></li>
-        <li style="color:var(--green-dark);">✅ Coupons sport, chèques vacances et chèques CAF acceptés.</li>
-      </ul>
-  
-      <p style="font-weight:600; margin-bottom:.5rem;">👨‍👩‍👧‍👦 Tarif famille :</p>
-      <p style="color:var(--muted); line-height:1.8; margin-bottom:1.5rem;">
-        À partir de 2 inscriptions : <strong>−10 € / licence</strong><br>
-        À partir de 3 inscriptions : <strong>−20 € / licence</strong><br>
-        <strong style="color:var(--green-dark);">Gratuit pour le 4ème membre !</strong>
-      </p>
-  
-      <div style="background:var(--green-mid); border-radius:14px; padding:1.2rem 1.5rem; color:white; text-align:center;">
-        <p style="font-weight:600; font-size:1rem; margin-bottom:.4rem;">📞 Renseignements & inscriptions</p>
-        <p style="font-size:1.1rem; font-weight:700;">06 77 27 83 40</p>
-        <p style="font-size:.95rem;">ou <a href="mailto:club@astt-manduel.fr" style="color:white; text-decoration:underline;">club@astt-manduel.fr</a></p>
-      </div>
+ 
+<!-- ══════════════════════════════════════════
+     INSCRIPTION
+     ══════════════════════════════════════════ -->
+<section id="inscription">
+  <div class="inscription-box">
+    <div class="section-tag">📋 Modalités d'inscription</div>
+    <h2 style="margin-bottom:1.5rem;">Nous rejoindre</h2>
+ 
+    <p style="color:var(--green-dark); font-weight:600; margin-bottom:1.5rem;">
+      2 séances d'essai vous sont proposées.
+    </p>
+ 
+    <p style="font-weight:600; margin-bottom:.75rem;">Pour une première adhésion, fournir <u>impérativement</u> :</p>
+    <ul>
+      <li>Pour les <strong>+40 ans</strong> : certificat médical d'aptitude à la pratique du tennis de table en compétition.</li>
+      <li>Pour les <strong>mineurs et -40 ans</strong> : questionnaire de santé fourni par le club.</li>
+      <li>Vos coordonnées : téléphone, adresse, email.</li>
+      <li>Votre date et lieu de naissance.</li>
+      <li>Chaussures de sport propres.</li>
+      <li>Pour la compétition : une raquette réglementée FFTT.</li>
+    </ul>
+ 
+    <p style="font-weight:600; margin-bottom:.75rem;">💰 Affiliation FFTT & assurance :</p>
+    <ul>
+      <li>Loisirs adultes & enfants (7–18 ans) : <strong>110 €</strong></li>
+      <li>Compétition : <strong>140 €</strong> ou <strong>170 €</strong> (avec maillot)</li>
+      <li>Tournois départementaux : <strong>20 €</strong></li>
+      <li style="color:var(--green-dark);">✅ Coupons sport, chèques vacances et chèques CAF acceptés.</li>
+    </ul>
+ 
+    <p style="font-weight:600; margin-bottom:.5rem;">👨‍👩‍👧‍👦 Tarif famille :</p>
+    <p style="color:var(--muted); line-height:1.8; margin-bottom:1.5rem;">
+      À partir de 2 inscriptions : <strong>−10 € / licence</strong><br>
+      À partir de 3 inscriptions : <strong>−20 € / licence</strong><br>
+      <strong style="color:var(--green-dark);">Gratuit pour le 4ème membre !</strong>
+    </p>
+ 
+    <div class="inscription-cta">
+      <p style="font-weight:600; font-size:1rem; margin-bottom:.4rem;">📞 Renseignements & inscriptions</p>
+      <p style="font-size:1.1rem; font-weight:700;">06 77 27 83 40</p>
+      <p style="font-size:.95rem;">ou <a href="mailto:club@astt-manduel.fr">club@astt-manduel.fr</a></p>
     </div>
-  </section>
-
-<!-- FOOTER -->
+  </div>
+</section>
+ 
+<!-- ══════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════ -->
 <footer>
   <p>© 2025 <span>ASTT Manduel</span> – Association Sportive de Tennis de Table · Manduel, Gard · Affilié FFTT</p>
 </footer>
-
+ 
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+     ══════════════════════════════════════════ -->
+<script>
+  function togglePanel(id) {
+    const panel = document.getElementById(id);
+    const isOpen = panel.style.maxHeight && panel.style.maxHeight !== '0px';
+ 
+    // Fermer tous les panneaux d'abord
+    document.querySelectorAll('.panel').forEach(p => {
+      p.style.maxHeight = '0';
+      p.style.overflowY = 'hidden';
+    });
+ 
+    // Ouvrir le panneau demandé s'il était fermé
+    if (!isOpen) {
+      panel.style.maxHeight = '80vh';
+      panel.style.overflowY = 'auto';
+    }
+  }
+</script>
+ 
 </body>
 </html>
+ 
