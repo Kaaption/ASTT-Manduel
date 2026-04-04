@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Membres – ASTT Manduel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+ 
+    /* ══════════════════════════════════════════
+       PAGE MEMBRES – styles spécifiques
+       ══════════════════════════════════════════ */
+ 
+    .membres-hero {
+      padding-top: 70px;
+      background: var(--green-pale);
+      text-align: center;
+      padding-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+ 
+    .membres-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(126,217,87,.3) 0%, transparent 70%);
+    }
+ 
+    .membres-hero-inner {
+      position: relative;
+      z-index: 1;
+      padding-top: 4rem;
+    }
+ 
+    .membres-hero .section-tag { justify-content: center; display: flex; }
+ 
+    .membres-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 1rem;
+      animation: fadeUp .6s ease both;
+    }
+    .membres-hero h1 span { color: var(--green-mid); }
+ 
+    .membres-hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.7;
+      animation: fadeUp .6s .1s ease both;
+    }
+ 
+    /* ── SECTIONS PAR RÔLE ── */
+    .membres-section {
+      padding: 5rem 10%;
+    }
+    .membres-section:nth-child(even) {
+      background: var(--gray);
+    }
+    .membres-section:nth-child(odd) {
+      background: var(--white);
+    }
+ 
+    .membres-section-title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid var(--green-light);
+    }
+    .membres-section-title h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: 0;
+    }
+    .membres-section-title .role-emoji {
+      font-size: 2rem;
+    }
+ 
+    /* ── GRILLE DE MEMBRES ── */
+    .membres-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+ 
+    .membre-card {
+      text-align: center;
+      transition: transform .25s;
+    }
+    .membre-card:hover { transform: translateY(-6px); }
+ 
+    .membre-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      overflow: hidden;
+      border: 4px solid var(--green-light);
+      background: var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .membre-card:hover .membre-photo {
+      border-color: var(--green-mid);
+      box-shadow: 0 12px 32px rgba(126,217,87,.25);
+    }
+ 
+    .membre-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+ 
+    /* Placeholder quand pas de photo */
+    .membre-photo-placeholder {
+      font-size: 4rem;
+      opacity: .35;
+      user-select: none;
+    }
+ 
+    /* Badge "Ajouter photo" au survol */
+    .membre-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(93,191,52,.85);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .2s;
+      cursor: pointer;
+      color: white;
+      font-size: .75rem;
+      font-weight: 600;
+      gap: .3rem;
+    }
+    .membre-card:hover .membre-photo-overlay { opacity: 1; }
+    .membre-photo-overlay span { font-size: 1.4rem; }
+ 
+    .membre-nom {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      color: var(--text);
+      margin-bottom: .2rem;
+    }
+ 
+    .membre-role {
+      display: inline-block;
+      background: var(--green-pale);
+      color: var(--green-dark);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      border-radius: 50px;
+    }
+ 
+    /* ── BOUTON RETOUR ── */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: .9rem;
+      padding: 10px 20px;
+      border: 2px solid var(--green-light);
+      border-radius: 50px;
+      transition: background .2s, transform .15s;
+      margin: 3rem 10% 0;
+      width: fit-content;
+    }
+    .back-btn:hover { background: var(--green-pale); transform: translateX(-4px); }
+ 
+    /* ── NOTE ADMIN ── */
+    .admin-note {
+      background: #fff8e1;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 12px 12px 0;
+      padding: 1rem 1.5rem;
+      margin: 0 10% 3rem;
+      font-size: .88rem;
+      color: #78350f;
+      line-height: 1.7;
+    }
+    .admin-note strong { display: block; margin-bottom: .3rem; }
+ 
+    @media (max-width: 900px) {
+      .membres-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.5rem; }
+      .membre-photo { width: 120px; height: 120px; }
+    }
+  </style>
+</head>
+<body>
+ 
+<!-- ══════════════════════════════════════════
+     NAV
+     ══════════════════════════════════════════ -->
+<nav>
+  <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ASTT <span>Manduel</span></a></div>
+  <ul>
+    <li><a href="index.html#about">Le club</a></li>
+    <li><a href="index.html#activites">Activités</a></li>
+    <li><a href="index.html#horaires">Horaires</a></li>
+    <li><a href="membres.html" style="color:var(--green-mid);">Membres</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Nous rejoindre</a></li>
+  </ul>
+</nav>
+ 
+<!-- ══════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════ -->
+<div class="membres-hero">
+  <div class="membres-hero-inner">
+    <div class="section-tag">👥 Notre équipe</div>
+    <h1>Les <span>Membres</span><br>du club</h1>
+    <p>Découvrez les bénévoles et joueurs qui font vivre l'ASTT Manduel au quotidien.</p>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     NOTE POUR L'ADMIN
+     ══════════════════════════════════════════ -->
+<div class="admin-note">
+  <strong>📝 Comment ajouter une photo ?</strong>
+  Placez les photos dans un dossier <code>img/membres/</code> à la racine de votre dépôt.
+  Dans le code, remplacez <code>&lt;div class="membre-photo-placeholder"&gt;🏓&lt;/div&gt;</code>
+  par <code>&lt;img src="img/membres/prenom-nom.jpg" alt="Prénom Nom" /&gt;</code>.
+  Format recommandé : carré, minimum 300×300px.
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     BUREAU DIRECTEUR
+     ══════════════════════════════════════════ -->
+<div class="membres-section">
+  <div class="membres-section-title">
+    <span class="role-emoji">🏛️</span>
+    <h2>Bureau Directeur</h2>
+  </div>
+  <div class="membres-grid">
+ 
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Olivier CARRERAS</div>
+      <div class="membre-role">Président</div>
+    </div>
+ 
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Vice-Président</div>
+    </div>
+ 
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Secrétaire</div>
+    </div>
+ 
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Trésorier</div>
+    </div>
+ 
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     ENTRAÎNEURS
+     ══════════════════════════════════════════ -->
+<div class="membres-section">
+  <div class="membres-section-title">
+    <span class="role-emoji">🎓</span>
+    <h2>Entraîneurs</h2>
+  </div>
+  <div class="membres-grid">
+ 
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Entraîneur adultes</div>
+    </div>
+ 
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Éducateur jeunes</div>
+    </div>
+ 
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     CAPITAINES D'ÉQUIPE
+     ══════════════════════════════════════════ -->
+<div class="membres-section">
+  <div class="membres-section-title">
+    <span class="role-emoji">🏆</span>
+    <h2>Capitaines d'équipe</h2>
+  </div>
+  <div class="membres-grid">
+ 
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Équipe 1</div>
+    </div>
+ 
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Équipe 2</div>
+    </div>
+ 
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Équipe 3</div>
+    </div>
+ 
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     BÉNÉVOLES
+     ══════════════════════════════════════════ -->
+<div class="membres-section">
+  <div class="membres-section-title">
+    <span class="role-emoji">🤝</span>
+    <h2>Bénévoles</h2>
+  </div>
+  <div class="membres-grid">
+ 
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Bénévole</div>
+    </div>
+ 
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Bénévole</div>
+    </div>
+ 
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     BOUTON RETOUR
+     ══════════════════════════════════════════ -->
+<a href="index.html" class="back-btn">← Retour à l'accueil</a>
+ 
+<!-- ══════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════ -->
+<footer style="margin-top:4rem;">
+  <p>© 2025 <span>ASTT Manduel</span> – Association Sportive de Tennis de Table · Manduel, Gard · Affilié FFTT</p>
+</footer>
+ 
+</body>
+</html>
