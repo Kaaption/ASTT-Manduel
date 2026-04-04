@@ -14,7 +14,7 @@
 
     .membres-hero {
       padding-top: 70px;
-      background: var(--green-pale);
+      background: #ede8e3;
       text-align: center;
       padding-bottom: 4rem;
       position: relative;
@@ -95,22 +95,21 @@
     }
     .membre-card:hover { transform: translateY(-6px); }
 
-    .membre-photo {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      margin: 0 auto 1rem;
-      overflow: hidden;
-      border: 4px solid var(--green-light);
-      background: var(--green-pale);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      box-shadow: 0 8px 24px rgba(0,0,0,.08);
-      transition: border-color .2s, box-shadow .2s;
-      transform: translateZ(0);
-    }
+  .membre-photo {
+  width: 160px;
+  height: 200px;
+  border-radius: 12px;
+  margin: 0 auto 1rem;
+  overflow: hidden;
+  border: 4px solid var(--green-light);
+  background: var(--green-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  transition: border-color .2s, box-shadow .2s;
+}
     .membre-card:hover .membre-photo {
       border-color: var(--green-mid);
       box-shadow: 0 12px 32px rgba(126,217,87,.25);
@@ -134,7 +133,7 @@
       position: absolute;
       inset: 0;
       background: rgba(93,191,52,.85);
-      border-radius: 50%;
+      border-radius: 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -201,6 +200,18 @@
     }
     .admin-note strong { display: block; margin-bottom: .3rem; }
 
+    .membre-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.membre-photo img.loaded {
+  opacity: 1;
+}
+
     @media (max-width: 900px) {
       .membres-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.5rem; }
       .membre-photo { width: 120px; height: 120px; }
@@ -246,7 +257,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/carrerra.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/carrerra-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span><carrerra class="jpeg"></carrerra></div>
       </div>
       <div class="membre-nom">Olivier CARRERAS</div>
@@ -255,7 +266,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/perez.jpg" alt="Jocelyn Perez" />
+        <img src="img/membres/perez-removebg-preview.png" alt="Jocelyn Perez" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Jocelyn PEREZ</div>
@@ -264,7 +275,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/pascal.jpg" alt="Pascal Tessier" />
+        <img src="img/membres/pascal-removebg-preview.png" alt="Pascal Tessier" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Pascal Tessier</div>
@@ -273,7 +284,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <div class="membre-photo-placeholder">🏓</div>
+        <img src="img/membres/fabrice-removebg-preview.png" alt="Fabrice Ayen" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Fabrice AYEN</div>
@@ -282,7 +293,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/amandine-lepoittevin.jpg" alt="Amandine Lepoittevin" />
+        <img src="img/membres/amandine-lepoittevin-removebg-preview.png" alt="Amandine Lepoittevin" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Amandine LEPOITTEVIN</div>
@@ -291,7 +302,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/pierre.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/pierre-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Pierre TRINQUIER</div>
@@ -300,7 +311,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/david.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/david-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">David PERRIN</div>
@@ -309,7 +320,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/poinsot.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/poinsot-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Gérald POINSOT</div>
@@ -331,7 +342,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/giorgi.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/giorgi-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Nicolas GIORGI</div>
@@ -340,7 +351,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/thomas.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/thomas-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Thomas VIOLIN</div>
@@ -371,7 +382,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/gilles.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/gilles-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Gilles BOJAN</div>
@@ -393,7 +404,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/olivier.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/olivier-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Olivier MALLET</div>
@@ -402,7 +413,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/benoit-roche.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/benoit-roche-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Benoit ROCHE</div>
@@ -411,7 +422,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/perez.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/perez-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Jocelyn PEREZ</div>
@@ -420,7 +431,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/nico.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/nico-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Nicolas LEPOITTEVIN</div>
@@ -429,7 +440,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <div class="membre-photo-placeholder">🏓</div>
+        <img src="img/membres/fabrice-removebg-preview.png" alt="Fabrice Ayen" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Fabrice AYEN</div>
@@ -438,7 +449,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/hervé.JPG" alt="Olivier Carreras" />
+        <img src="img/membres/hervé-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Hervé VIGNARD</div>
@@ -447,7 +458,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/guillaume.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/guillaume-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Guillaume RAVET</div>
@@ -456,7 +467,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/hong.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/hong-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Hong OURAY</div>
@@ -465,7 +476,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/simon.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/simon-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Simon DURET</div>
@@ -474,7 +485,7 @@
 
     <div class="membre-card">
       <div class="membre-photo">
-        <img src="img/membres/ethan.jpg" alt="Olivier Carreras" />
+        <img src="img/membres/ethan-removebg-preview.png" alt="Olivier Carreras" />
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Ethan VIGNARD</div>
@@ -495,6 +506,16 @@
 <footer style="margin-top:4rem;">
   <p>© 2025 <span>ASTT Manduel</span> – Association Sportive de Tennis de Table · Manduel, Gard · Affilié FFTT</p>
 </footer>
+
+<script>
+  document.querySelectorAll('.membre-photo img').forEach(img => {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', () => img.classList.add('loaded'));
+    }
+  });
+</script>
 
 </body>
 </html>
