@@ -7,11 +7,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
- 
+
     /* ══════════════════════════════════════════
        PAGE MEMBRES – styles spécifiques
        ══════════════════════════════════════════ */
- 
+
     .membres-hero {
       padding-top: 70px;
       background: var(--green-pale);
@@ -20,22 +20,22 @@
       position: relative;
       overflow: hidden;
     }
- 
+
     .membres-hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background: radial-gradient(ellipse at 50% 0%, rgba(126,217,87,.3) 0%, transparent 70%);
     }
- 
+
     .membres-hero-inner {
       position: relative;
       z-index: 1;
       padding-top: 4rem;
     }
- 
+
     .membres-hero .section-tag { justify-content: center; display: flex; }
- 
+
     .membres-hero h1 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(3rem, 6vw, 5.5rem);
@@ -45,7 +45,7 @@
       animation: fadeUp .6s ease both;
     }
     .membres-hero h1 span { color: var(--green-mid); }
- 
+
     .membres-hero p {
       color: var(--muted);
       font-size: 1.05rem;
@@ -54,7 +54,7 @@
       line-height: 1.7;
       animation: fadeUp .6s .1s ease both;
     }
- 
+
     /* ── SECTIONS PAR RÔLE ── */
     .membres-section {
       padding: 5rem 10%;
@@ -65,7 +65,7 @@
     .membres-section:nth-child(odd) {
       background: var(--white);
     }
- 
+
     .membres-section-title {
       display: flex;
       align-items: center;
@@ -81,20 +81,20 @@
     .membres-section-title .role-emoji {
       font-size: 2rem;
     }
- 
+
     /* ── GRILLE DE MEMBRES ── */
     .membres-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 2rem;
     }
- 
+
     .membre-card {
       text-align: center;
       transition: transform .25s;
     }
     .membre-card:hover { transform: translateY(-6px); }
- 
+
     .membre-photo {
       width: 160px;
       height: 160px;
@@ -114,20 +114,20 @@
       border-color: var(--green-mid);
       box-shadow: 0 12px 32px rgba(126,217,87,.25);
     }
- 
+
     .membre-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
- 
+
     /* Placeholder quand pas de photo */
     .membre-photo-placeholder {
       font-size: 4rem;
       opacity: .35;
       user-select: none;
     }
- 
+
     /* Badge "Ajouter photo" au survol */
     .membre-photo-overlay {
       position: absolute;
@@ -148,7 +148,7 @@
     }
     .membre-card:hover .membre-photo-overlay { opacity: 1; }
     .membre-photo-overlay span { font-size: 1.4rem; }
- 
+
     .membre-nom {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.2rem;
@@ -156,7 +156,7 @@
       color: var(--text);
       margin-bottom: .2rem;
     }
- 
+
     .membre-role {
       display: inline-block;
       background: var(--green-pale);
@@ -168,7 +168,7 @@
       padding: 3px 12px;
       border-radius: 50px;
     }
- 
+
     /* ── BOUTON RETOUR ── */
     .back-btn {
       display: inline-flex;
@@ -186,7 +186,7 @@
       width: fit-content;
     }
     .back-btn:hover { background: var(--green-pale); transform: translateX(-4px); }
- 
+
     /* ── NOTE ADMIN ── */
     .admin-note {
       background: #fff8e1;
@@ -199,7 +199,7 @@
       line-height: 1.7;
     }
     .admin-note strong { display: block; margin-bottom: .3rem; }
- 
+
     @media (max-width: 900px) {
       .membres-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.5rem; }
       .membre-photo { width: 120px; height: 120px; }
@@ -207,7 +207,7 @@
   </style>
 </head>
 <body>
- 
+
 <!-- ══════════════════════════════════════════
      NAV
      ══════════════════════════════════════════ -->
@@ -221,7 +221,7 @@
     <li><a href="index.html#contact" class="nav-cta">Nous rejoindre</a></li>
   </ul>
 </nav>
- 
+
 <!-- ══════════════════════════════════════════
      HERO
      ══════════════════════════════════════════ -->
@@ -232,7 +232,7 @@
     <p>Découvrez les bénévoles et joueurs qui font vivre l'ASTT Manduel au quotidien.</p>
   </div>
 </div>
- 
+
 <!-- ══════════════════════════════════════════
      NOTE POUR L'ADMIN
      ══════════════════════════════════════════ -->
@@ -243,7 +243,7 @@
   par <code>&lt;img src="img/membres/prenom-nom.jpg" alt="Prénom Nom" /&gt;</code>.
   Format recommandé : carré, minimum 300×300px.
 </div>
- 
+
 <!-- ══════════════════════════════════════════
      BUREAU DIRECTEUR
      ══════════════════════════════════════════ -->
@@ -253,7 +253,7 @@
     <h2>Bureau Directeur</h2>
   </div>
   <div class="membres-grid">
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <div class="membre-photo-placeholder">🏓</div>
@@ -262,7 +262,7 @@
       <div class="membre-nom">Olivier CARRERAS</div>
       <div class="membre-role">Président</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <div class="membre-photo-placeholder">🏓</div>
@@ -271,16 +271,7 @@
       <div class="membre-nom">Prénom NOM</div>
       <div class="membre-role">Vice-Président</div>
     </div>
- 
-    <div class="membre-card">
-      <div class="membre-photo">
-        <div class="membre-photo-placeholder">🏓</div>
-        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
-      </div>
-      <div class="membre-nom">Prénom NOM</div>
-      <div class="membre-role">Secrétaire</div>
-    </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <div class="membre-photo-placeholder">🏓</div>
@@ -289,123 +280,231 @@
       <div class="membre-nom">Prénom NOM</div>
       <div class="membre-role">Trésorier</div>
     </div>
- 
+
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Trésorier Adjoint</div>
+    </div>
+
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Secrétaire</div>
+    </div>
+
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Secrétaire Adjoint</div>
+    </div>
+
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Chargé de Communication</div>
+    </div>
+
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Chargé du Matériel</div>
+    </div>
+
   </div>
 </div>
- 
+
 <!-- ══════════════════════════════════════════
-     ENTRAÎNEURS
+     FORMATEURS JEUNES
      ══════════════════════════════════════════ -->
 <div class="membres-section">
   <div class="membres-section-title">
     <span class="role-emoji">🎓</span>
-    <h2>Entraîneurs</h2>
+    <h2>Formateurs Jeunes</h2>
   </div>
   <div class="membres-grid">
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <div class="membre-photo-placeholder">🏓</div>
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Prénom NOM</div>
-      <div class="membre-role">Entraîneur adultes</div>
+      <div class="membre-role">Formateur jeunes</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <div class="membre-photo-placeholder">🏓</div>
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Prénom NOM</div>
-      <div class="membre-role">Éducateur jeunes</div>
+      <div class="membre-role">Formateur jeunes</div>
     </div>
- 
+
   </div>
 </div>
- 
+
 <!-- ══════════════════════════════════════════
-     CAPITAINES D'ÉQUIPE
+     RESPONSABLES DES ÉQUIPES
+     ══════════════════════════════════════════ -->
+<div class="membres-section">
+  <div class="membres-section-title">
+    <span class="role-emoji">📋</span>
+    <h2>Responsables des équipes</h2>
+  </div>
+  <div class="membres-grid">
+
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Responsable équipes</div>
+    </div>
+
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Responsable équipes</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     CAPITAINES
      ══════════════════════════════════════════ -->
 <div class="membres-section">
   <div class="membres-section-title">
     <span class="role-emoji">🏆</span>
-    <h2>Capitaines d'équipe</h2>
+    <h2>Capitaines</h2>
   </div>
   <div class="membres-grid">
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <div class="membre-photo-placeholder">🏓</div>
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Prénom NOM</div>
-      <div class="membre-role">Équipe 1</div>
+      <div class="membre-role">Capitaine – Équipe 1</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <div class="membre-photo-placeholder">🏓</div>
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Prénom NOM</div>
-      <div class="membre-role">Équipe 2</div>
+      <div class="membre-role">Capitaine – Équipe 2</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <div class="membre-photo-placeholder">🏓</div>
         <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
       </div>
       <div class="membre-nom">Prénom NOM</div>
-      <div class="membre-role">Équipe 3</div>
+      <div class="membre-role">Capitaine – Équipe 3</div>
     </div>
- 
+
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Capitaine – Équipe 4</div>
+    </div>
+
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Capitaine – Équipe 5</div>
+    </div>
+
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Capitaine – Équipe 6</div>
+    </div>
+
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Capitaine – Équipe 7</div>
+    </div>
+
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Capitaine – Équipe 8</div>
+    </div>
+
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Capitaine – Équipe 9</div>
+    </div>
+
+    <div class="membre-card">
+      <div class="membre-photo">
+        <div class="membre-photo-placeholder">🏓</div>
+        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
+      </div>
+      <div class="membre-nom">Prénom NOM</div>
+      <div class="membre-role">Capitaine – Équipe 10</div>
+    </div>
+
   </div>
 </div>
- 
-<!-- ══════════════════════════════════════════
-     BÉNÉVOLES
-     ══════════════════════════════════════════ -->
-<div class="membres-section">
-  <div class="membres-section-title">
-    <span class="role-emoji">🤝</span>
-    <h2>Bénévoles</h2>
-  </div>
-  <div class="membres-grid">
- 
-    <div class="membre-card">
-      <div class="membre-photo">
-        <div class="membre-photo-placeholder">🏓</div>
-        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
-      </div>
-      <div class="membre-nom">Prénom NOM</div>
-      <div class="membre-role">Bénévole</div>
-    </div>
- 
-    <div class="membre-card">
-      <div class="membre-photo">
-        <div class="membre-photo-placeholder">🏓</div>
-        <div class="membre-photo-overlay"><span>📷</span>Ajouter photo</div>
-      </div>
-      <div class="membre-nom">Prénom NOM</div>
-      <div class="membre-role">Bénévole</div>
-    </div>
- 
-  </div>
-</div>
- 
+
 <!-- ══════════════════════════════════════════
      BOUTON RETOUR
      ══════════════════════════════════════════ -->
 <a href="index.html" class="back-btn">← Retour à l'accueil</a>
- 
+
 <!-- ══════════════════════════════════════════
      FOOTER
      ══════════════════════════════════════════ -->
 <footer style="margin-top:4rem;">
   <p>© 2025 <span>ASTT Manduel</span> – Association Sportive de Tennis de Table · Manduel, Gard · Affilié FFTT</p>
 </footer>
- 
+
 </body>
 </html>
