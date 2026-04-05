@@ -231,6 +231,8 @@
     <li><a href="#" onclick="togglePanel('reglement-panel'); return false;">Règlement</a></li>
     <li><a href="#" onclick="togglePanel('mentions-panel'); return false;">Mentions légales</a></li>
     <li><a href="membres.html">Membres</a></li>
+    <li><a href="calculateur.html">Calculateur</a></li>
+    <li><a href="boutique.html">Boutique</a></li>
     <li><a href="#contact" class="nav-cta">Nous rejoindre</a></li>
   </ul>
 </nav>
@@ -263,23 +265,6 @@
         <div class="stat-num">30+</div>
         <div class="stat-label">Ans d'histoire</div>
       </div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="deco-circle deco-circle-1"></div>
-    <div class="deco-circle deco-circle-2"></div>
-    <div class="deco-circle deco-circle-3"></div>
-    <div class="ping-pong-graphic">
-      <div class="big-ball"></div>
-      <svg class="paddle-svg" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="60" cy="60" rx="52" ry="55" fill="#5dbf34"/>
-        <ellipse cx="60" cy="60" rx="52" ry="55" fill="none" stroke="#2d6e0f" stroke-width="4"/>
-        <line x1="60" y1="5" x2="60" y2="115" stroke="#2d6e0f" stroke-width="2.5" stroke-dasharray="5 4"/>
-        <line x1="8" y1="60" x2="112" y2="60" stroke="#2d6e0f" stroke-width="2.5" stroke-dasharray="5 4"/>
-        <rect x="50" y="108" width="20" height="48" rx="9" fill="#8B5E3C"/>
-        <rect x="50" y="108" width="20" height="48" rx="9" fill="none" stroke="#5a3d22" stroke-width="2"/>
-        <ellipse cx="38" cy="35" rx="14" ry="10" fill="rgba(255,255,255,0.2)" transform="rotate(-20 38 35)"/>
-      </svg>
     </div>
   </div>
 </section>
@@ -441,8 +426,36 @@
       </div>
     </div>
   </div>
-</section>
- 
+  <div class="contact-form">
+  <h3>Envoyez-nous un message</h3>
+  <form action="https://formspree.io/f/mdappbjz" method="POST">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Prénom</label>
+        <input type="text" name="prénom" placeholder="Jean" required />
+      </div>
+      <div class="form-group">
+        <label>Nom</label>
+        <input type="text" name="nom" placeholder="Dupont" required />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" name="email" placeholder="jean.dupont@email.com" required />
+    </div>
+    <div class="form-group">
+      <label>Objet</label>
+      <input type="text" name="objet" placeholder="Inscription, renseignement…" required />
+    </div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea name="message" rows="4" placeholder="Votre message…" required></textarea>
+    </div>
+    <button type="submit" class="btn-submit">Envoyer le message 🏓</button>
+  </form>
+</div>
+ </section>
+
 <!-- ══════════════════════════════════════════
      INSCRIPTION
      ══════════════════════════════════════════ -->
@@ -492,6 +505,7 @@
      FOOTER
      ══════════════════════════════════════════ -->
 <footer>
+  <img src="img/Logo.png" alt="Logo ASTT Manduel" style="width:80px; margin-bottom:1rem; opacity:.8;" />
   <p>© 2025 <span>ASTT Manduel</span> – Association Sportive de Tennis de Table · Manduel, Gard · Affilié FFTT</p>
 </footer>
  

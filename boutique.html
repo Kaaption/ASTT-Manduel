@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boutique – ASTT Manduel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+ 
+    .boutique-hero {
+      padding-top: 70px;
+      background: var(--text);
+      text-align: center;
+      padding-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+ 
+    .boutique-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(126,217,87,.15) 0%, transparent 70%);
+    }
+ 
+    .boutique-hero-inner {
+      position: relative;
+      z-index: 1;
+      padding-top: 4rem;
+    }
+ 
+    .boutique-hero .section-tag { color: var(--green-light); justify-content: center; display: flex; }
+ 
+    .boutique-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 1rem;
+      color: white;
+      animation: fadeUp .6s ease both;
+    }
+    .boutique-hero h1 span { color: var(--green-light); }
+ 
+    .boutique-hero p {
+      color: rgba(255,255,255,.6);
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.7;
+      animation: fadeUp .6s .1s ease both;
+    }
+ 
+    /* ── CONTAINER ── */
+    .boutique-container {
+      padding: 5rem 10%;
+      background: var(--gray);
+    }
+ 
+    /* ── INFO COMMANDE ── */
+    .commande-info {
+      background: var(--green-pale);
+      border-left: 5px solid var(--green-mid);
+      border-radius: 0 16px 16px 0;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 3rem;
+      font-size: .95rem;
+      color: var(--green-dark);
+      line-height: 1.7;
+    }
+    .commande-info strong { display: block; margin-bottom: .3rem; font-size: 1rem; }
+ 
+    /* ── GRILLE PRODUITS ── */
+    .produits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+ 
+    .produit-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .produit-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(0,0,0,.1);
+    }
+ 
+    .produit-photo {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background: var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .produit-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .produit-photo-placeholder {
+      font-size: 5rem;
+      opacity: .25;
+    }
+ 
+    /* Badge stock */
+    .stock-badge {
+      position: absolute;
+      top: 12px; right: 12px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+    .stock-badge.disponible {
+      background: var(--green-light);
+      color: var(--green-dark);
+    }
+    .stock-badge.stock-limite {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .stock-badge.sur-commande {
+      background: #e0e7ff;
+      color: #3730a3;
+    }
+ 
+    .produit-info {
+      padding: 1.5rem;
+    }
+ 
+    .produit-nom {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      margin-bottom: .5rem;
+      color: var(--text);
+    }
+ 
+    .produit-prix {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--green-mid);
+      margin-bottom: .75rem;
+    }
+ 
+    .produit-details {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+ 
+    .produit-details span {
+      display: inline-block;
+      background: var(--gray);
+      border-radius: 6px;
+      padding: 2px 8px;
+      margin: 2px;
+      font-weight: 600;
+      font-size: .78rem;
+      color: var(--text);
+    }
+ 
+    .produit-cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--green-light);
+      color: var(--text);
+      font-weight: 700;
+      font-size: .9rem;
+      padding: 10px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+      box-shadow: 0 4px 16px rgba(126,217,87,.3);
+    }
+    .produit-cta:hover { background: var(--green-mid); transform: translateY(-2px); }
+ 
+    /* ── BOUTON RETOUR ── */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: .9rem;
+      padding: 10px 20px;
+      border: 2px solid var(--green-light);
+      border-radius: 50px;
+      transition: background .2s, transform .15s;
+      margin: 0 10% 3rem;
+      width: fit-content;
+    }
+    .back-btn:hover { background: var(--green-pale); transform: translateX(-4px); }
+ 
+    @media (max-width: 900px) {
+      .produits-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+ 
+<!-- NAV -->
+<nav>
+  <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ASTT <span>Manduel</span></a></div>
+  <ul>
+    <li><a href="index.html#about">Le club</a></li>
+    <li><a href="index.html#activites">Activités</a></li>
+    <li><a href="index.html#horaires">Horaires</a></li>
+    <li><a href="membres.html">Membres</a></li>
+    <li><a href="calculateur.html">Calculateur</a></li>
+    <li><a href="boutique.html" style="color:var(--green-mid);">Boutique</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Nous rejoindre</a></li>
+  </ul>
+</nav>
+ 
+<!-- HERO -->
+<div class="boutique-hero">
+  <div class="boutique-hero-inner">
+    <div class="section-tag">🛒 Produits du club</div>
+    <h1>Boutique <span>ASTT</span><br>Manduel</h1>
+    <p>Portez les couleurs du club ! Pour toute commande, contactez-nous directement.</p>
+  </div>
+</div>
+ 
+<!-- BOUTIQUE -->
+<div class="boutique-container">
+ 
+  <div class="commande-info">
+  <strong>📦 Comment commander ?</strong>
+  Vous pouvez commander directement depuis cette page en cliquant sur le bouton <strong style="display:inline;">Commander</strong> de l'article souhaité — un email pré-rempli s'ouvrira automatiquement. Vous pouvez aussi passer commande via le formulaire de contact disponible dans la section <a href="index.html#contact" style="color:var(--green-dark); font-weight:700; display:inline;">Nous contacter</a> de la page d'accueil, ou nous joindre par email à <strong style="display:inline;">club@astt-manduel.fr</strong> ou par téléphone au <strong style="display:inline;">06 77 27 83 40</strong> en précisant l'article, la taille et la quantité souhaitée.
+</div>
+ 
+  <div class="produits-grid">
+ 
+    <!-- MUG -->
+    <div class="produit-card">
+      <div class="produit-photo">
+        <img src="img/boutique/mug.jpg" alt="Mug ASTT Manduel" />
+        <div class="stock-badge disponible">En stock</div>
+      </div>
+      <div class="produit-info">
+        <div class="produit-nom">Mug ASTT Manduel</div>
+        <div class="produit-prix">10 €</div>
+        <div class="produit-details">Mug aux couleurs du club, idéal pour les supporters !</div>
+        <a href="mailto:club@astt-manduel.fr?subject=Commande - Mug" class="produit-cta">Commander</a>
+      </div>
+    </div>
+ 
+    <!-- SHORT -->
+    <div class="produit-card">
+      <div class="produit-photo">
+        <img src="img/boutique/short.jpg" alt="Shorts La Fabrique" />
+        <div class="stock-badge disponible">En stock</div>
+      </div>
+      <div class="produit-info">
+        <div class="produit-nom">Short</div>
+        <div class="produit-prix">15 €</div>
+        <div class="produit-details">Short sportif aux couleurs du club.</div>
+        <a href="mailto:club@astt-manduel.fr?subject=Commande - Short" class="produit-cta">Commander</a>
+      </div>
+    </div>
+ 
+    <!-- NOUVEAU MAILLOT -->
+    <div class="produit-card">
+      <div class="produit-photo">
+        <img src="img/boutique/nouveau-maillot.jpg" alt="Maillot New ASTT Manduel" />
+        <div class="stock-badge stock-limite">Stock limité</div>
+      </div>
+      <div class="produit-info">
+        <div class="produit-nom">Nouveau Maillot</div>
+        <div class="produit-prix">30 €</div>
+        <div class="produit-details">
+          Stock disponible :<br>
+          <span>M × 3</span>
+          <span>XL × 1</span>
+        </div>
+        <a href="mailto:club@astt-manduel.fr?subject=Commande - Nouveau Maillot" class="produit-cta">Commander</a>
+      </div>
+    </div>
+ 
+    <!-- MAILLOT VERT -->
+    <div class="produit-card">
+      <div class="produit-photo">
+        <img src="img/boutique/maillot-vert.jpg" alt="Maillot Vert ASTT Manduel" />
+        <div class="stock-badge stock-limite">Stock limité</div>
+      </div>
+      <div class="produit-info">
+        <div class="produit-nom">Maillot Vert</div>
+        <div class="produit-prix">30 €</div>
+        <div class="produit-details">
+          Stock disponible :<br>
+          <span>L × 1</span>
+          <span>12 ans × 3</span>
+        </div>
+        <a href="mailto:club@astt-manduel.fr?subject=Commande - Maillot Vert" class="produit-cta">Commander</a>
+      </div>
+    </div>
+ 
+    <!-- BONNET -->
+    <div class="produit-card">
+      <div class="produit-photo">
+        <img src="img/boutique/bonnet.jpg" alt="Bonnet ASTT Manduel" />
+        <div class="stock-badge disponible">En stock</div>
+      </div>
+      <div class="produit-info">
+        <div class="produit-nom">Bonnet</div>
+        <div class="produit-prix">15 €</div>
+        <div class="produit-details">Bonnet aux couleurs du club pour l'hiver.</div>
+        <a href="mailto:club@astt-manduel.fr?subject=Commande - Bonnet" class="produit-cta">Commander</a>
+      </div>
+    </div>
+ 
+    <!-- MAILLOT BLEU -->
+    <div class="produit-card">
+      <div class="produit-photo">
+        <img src="img/boutique/maillot-bleu.jpg" alt="Maillot Bleu ASTT Manduel" />
+        <div class="stock-badge stock-limite">Stock limité</div>
+      </div>
+      <div class="produit-info">
+        <div class="produit-nom">Maillot Bleu</div>
+        <div class="produit-prix">15 €</div>
+        <div class="produit-details">
+          Stock disponible :<br>
+          <span>XL × 2</span>
+          <span>M × 3</span>
+          <span>L × 1</span>
+        </div>
+        <a href="mailto:club@astt-manduel.fr?subject=Commande - Maillot Bleu" class="produit-cta">Commander</a>
+      </div>
+    </div>
+ 
+    <!-- COUPE-VENT -->
+    <div class="produit-card">
+      <div class="produit-photo">
+        <img src="img/boutique/coupe-vent.jpg" alt="Coupe-Vent ASTT Manduel" />
+        <div class="stock-badge disponible">En stock</div>
+      </div>
+      <div class="produit-info">
+        <div class="produit-nom">Coupe-Vent</div>
+        <div class="produit-prix">40 €</div>
+        <div class="produit-details">
+          Couleurs disponibles :<br>
+          <span>Vert foncé</span>
+          <span>Bleu marine</span>
+          <span>Noir</span>
+          <span>Gris</span>
+        </div>
+        <a href="mailto:club@astt-manduel.fr?subject=Commande - Coupe-Vent" class="produit-cta">Commander</a>
+      </div>
+    </div>
+ 
+    <!-- POLO -->
+    <div class="produit-card">
+      <div class="produit-photo">
+        <img src="img/boutique/polo.jpg" alt="Polo ASTT Manduel" />
+        <div class="stock-badge sur-commande">Sur commande</div>
+      </div>
+      <div class="produit-info">
+        <div class="produit-nom">Polo</div>
+        <div class="produit-prix">30 €</div>
+        <div class="produit-details">
+          Stock disponible :<br>
+          <span>M × 1</span><br>
+          ⏱️ Délai de livraison : 15 jours
+        </div>
+        <a href="mailto:club@astt-manduel.fr?subject=Commande - Polo" class="produit-cta">Commander</a>
+      </div>
+    </div>
+
+    <!-- PROCHAINEMENT -->
+<div class="produit-card" style="opacity:.7;">
+  <div class="produit-photo" style="background: var(--gray);">
+    <img src="img/boutique/prochainement.jpg" alt="Prochainement" />
+    <div class="stock-badge" style="background:#f3f4f6; color:var(--muted);">Bientôt disponible</div>
+  </div>
+  <div class="produit-info">
+    <div class="produit-nom">Prochainement</div>
+    <div class="produit-prix" style="color:var(--muted); font-size:1rem;">À venir</div>
+    <div class="produit-details">
+      De nouveaux articles arrivent bientôt dans la boutique :<br><br>
+      <span>🧢 Casquettes</span>
+      <span>🥛 Verres</span>
+      <span>🏊 Serviettes</span>
+    </div>
+    <div style="
+      display:block;
+      width:100%;
+      text-align:center;
+      background:var(--gray);
+      color:var(--muted);
+      font-weight:700;
+      font-size:.9rem;
+      padding:10px;
+      border-radius:50px;
+    ">Bientôt disponible</div>
+  </div>
+</div>
+ 
+  </div>
+</div>
+ 
+<!-- BOUTON RETOUR -->
+<a href="index.html" class="back-btn">← Retour à l'accueil</a>
+ 
+<!-- FOOTER -->
+<footer style="margin-top:4rem;">
+  <img src="img/Logo.png" alt="Logo ASTT Manduel" style="width:80px; margin-bottom:1rem; opacity:.8;" />
+  <p>© 2025 <span>ASTT Manduel</span> – Association Sportive de Tennis de Table · Manduel, Gard · Affilié FFTT</p>
+</footer>
+ 
+</body>
+</html>
+ 
