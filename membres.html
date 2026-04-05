@@ -1,6 +1,3 @@
-Membres · HTML
-Copier
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,7 +7,7 @@ Copier
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
- 
+
     .membres-hero {
       padding-top: 70px;
       background: #ede8e3;
@@ -19,22 +16,22 @@ Copier
       position: relative;
       overflow: hidden;
     }
- 
+
     .membres-hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background: radial-gradient(ellipse at 50% 0%, rgba(126,217,87,.3) 0%, transparent 70%);
     }
- 
+
     .membres-hero-inner {
       position: relative;
       z-index: 1;
       padding-top: 4rem;
     }
- 
+
     .membres-hero .section-tag { justify-content: center; display: flex; }
- 
+
     .membres-hero h1 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(3rem, 6vw, 5.5rem);
@@ -44,7 +41,7 @@ Copier
       animation: fadeUp .6s ease both;
     }
     .membres-hero h1 span { color: var(--green-mid); }
- 
+
     .membres-hero p {
       color: var(--muted);
       font-size: 1.05rem;
@@ -53,11 +50,11 @@ Copier
       line-height: 1.7;
       animation: fadeUp .6s .1s ease both;
     }
- 
+
     .membres-section { padding: 5rem 10%; }
     .membres-section:nth-child(even) { background: var(--gray); }
     .membres-section:nth-child(odd) { background: var(--white); }
- 
+
     .membres-section-title {
       display: flex;
       align-items: center;
@@ -71,19 +68,19 @@ Copier
       margin-bottom: 0;
     }
     .membres-section-title .role-emoji { font-size: 2rem; }
- 
+
     .membres-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 2rem;
     }
- 
+
     .membre-card {
       text-align: center;
       transition: transform .25s;
     }
     .membre-card:hover { transform: translateY(-6px); }
- 
+
     .membre-photo {
       width: 160px;
       height: 200px;
@@ -103,7 +100,7 @@ Copier
       border-color: var(--green-mid);
       box-shadow: 0 12px 32px rgba(126,217,87,.25);
     }
- 
+
     .membre-photo img {
       width: 100%;
       height: 100%;
@@ -112,13 +109,13 @@ Copier
       transition: opacity .3s ease;
     }
     .membre-photo img.loaded { opacity: 1; }
- 
+
     .membre-photo-placeholder {
       font-size: 4rem;
       opacity: .35;
       user-select: none;
     }
- 
+
     .membre-nom {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.2rem;
@@ -126,7 +123,7 @@ Copier
       color: var(--text);
       margin-bottom: .2rem;
     }
- 
+
     .membre-role {
       display: inline-block;
       background: var(--green-pale);
@@ -138,7 +135,7 @@ Copier
       padding: 3px 12px;
       border-radius: 50px;
     }
- 
+
     .back-btn {
       display: inline-flex;
       align-items: center;
@@ -155,7 +152,7 @@ Copier
       width: fit-content;
     }
     .back-btn:hover { background: var(--green-pale); transform: translateX(-4px); }
- 
+
     @media (max-width: 900px) {
       .membres-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.5rem; }
       .membre-photo { width: 120px; height: 150px; }
@@ -163,11 +160,12 @@ Copier
   </style>
 </head>
 <body>
- 
+
 <!-- NAV -->
 <nav>
   <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ASTT <span>Manduel</span></a></div>
-  <ul>
+  <button class="hamburger" onclick="toggleMenu()" id="hamburger">☰</button>
+  <ul id="nav-menu">
     <li><a href="index.html#about">Le club</a></li>
     <li><a href="index.html#activites">Activités</a></li>
     <li><a href="index.html#horaires">Horaires</a></li>
@@ -177,7 +175,7 @@ Copier
     <li><a href="index.html#contact" class="nav-cta">Nous rejoindre</a></li>
   </ul>
 </nav>
- 
+
 <!-- HERO -->
 <div class="membres-hero">
   <div class="membres-hero-inner">
@@ -186,7 +184,7 @@ Copier
     <p>Découvrez les bénévoles et joueurs qui font vivre l'ASTT Manduel au quotidien.</p>
   </div>
 </div>
- 
+
 <!-- BUREAU DIRECTEUR -->
 <div class="membres-section">
   <div class="membres-section-title">
@@ -194,7 +192,7 @@ Copier
     <h2>Bureau Directeur</h2>
   </div>
   <div class="membres-grid">
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/carrerra-removebg-preview.png" alt="Olivier Carreras" />
@@ -202,7 +200,7 @@ Copier
       <div class="membre-nom">Olivier CARRERAS</div>
       <div class="membre-role">Président</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/perez-removebg-preview.png" alt="Jocelyn Perez" />
@@ -210,7 +208,7 @@ Copier
       <div class="membre-nom">Jocelyn PEREZ</div>
       <div class="membre-role">Vice-Président</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/pascal-removebg-preview.png" alt="Pascal Tessier" />
@@ -218,7 +216,7 @@ Copier
       <div class="membre-nom">Pascal TESSIER</div>
       <div class="membre-role">Trésorier</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/fabrice-removebg-preview.png" alt="Fabrice Ayen" />
@@ -226,7 +224,7 @@ Copier
       <div class="membre-nom">Fabrice AYEN</div>
       <div class="membre-role">Trésorier Adjoint/AR + JA1</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/amandine-lepoittevin-removebg-preview.png" alt="Amandine Lepoittevin" />
@@ -234,7 +232,7 @@ Copier
       <div class="membre-nom">Amandine LEPOITTEVIN</div>
       <div class="membre-role">Secrétaire/AR + JA1</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/pierre-removebg-preview.png" alt="Pierre Trinquier" />
@@ -242,7 +240,7 @@ Copier
       <div class="membre-nom">Pierre TRINQUIER</div>
       <div class="membre-role">Secrétaire Adjoint</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/david-removebg-preview.png" alt="David Perrin" />
@@ -250,7 +248,7 @@ Copier
       <div class="membre-nom">David PERRIN</div>
       <div class="membre-role">Chargé de communication/AR + JA1</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/poinsot-removebg-preview.png" alt="Gérald Poinsot" />
@@ -258,10 +256,10 @@ Copier
       <div class="membre-nom">Gérald POINSOT</div>
       <div class="membre-role">Chargé du matériel/AR + JA1</div>
     </div>
- 
+
   </div>
 </div>
- 
+
 <!-- FORMATEURS JEUNES -->
 <div class="membres-section">
   <div class="membres-section-title">
@@ -269,7 +267,7 @@ Copier
     <h2>Formateurs Jeunes</h2>
   </div>
   <div class="membres-grid">
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/giorgi-removebg-preview.png" alt="Nicolas Giorgi" />
@@ -277,7 +275,7 @@ Copier
       <div class="membre-nom">Nicolas GIORGI</div>
       <div class="membre-role">Formateur jeunes</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/thomas-removebg-preview.png" alt="Thomas Violin" />
@@ -285,10 +283,10 @@ Copier
       <div class="membre-nom">Thomas VIOLIN</div>
       <div class="membre-role">Formateur jeunes</div>
     </div>
- 
+
   </div>
 </div>
- 
+
 <!-- RESPONSABLES DES ÉQUIPES -->
 <div class="membres-section">
   <div class="membres-section-title">
@@ -296,7 +294,7 @@ Copier
     <h2>Responsables des équipes</h2>
   </div>
   <div class="membres-grid">
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <div class="membre-photo-placeholder">🏓</div>
@@ -304,7 +302,7 @@ Copier
       <div class="membre-nom">Laurent ROTELLI</div>
       <div class="membre-role">Responsable équipes</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/gilles-removebg-preview.png" alt="Gilles Bojan" />
@@ -312,10 +310,10 @@ Copier
       <div class="membre-nom">Gilles BOJAN</div>
       <div class="membre-role">Responsable équipes</div>
     </div>
- 
+
   </div>
 </div>
- 
+
 <!-- CAPITAINES -->
 <div class="membres-section">
   <div class="membres-section-title">
@@ -323,7 +321,7 @@ Copier
     <h2>Capitaines</h2>
   </div>
   <div class="membres-grid">
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/olivier-removebg-preview.png" alt="Olivier Mallet" />
@@ -331,7 +329,7 @@ Copier
       <div class="membre-nom">Olivier MALLET</div>
       <div class="membre-role">Capitaine – Équipe 1 - R3</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/benoit-roche-removebg-preview.png" alt="Benoit Roche" />
@@ -339,7 +337,7 @@ Copier
       <div class="membre-nom">Benoit ROCHE</div>
       <div class="membre-role">Capitaine – Équipe 2 - D1</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/perez-removebg-preview.png" alt="Jocelyn Perez" />
@@ -347,7 +345,7 @@ Copier
       <div class="membre-nom">Jocelyn PEREZ</div>
       <div class="membre-role">Capitaine – Équipe 3 - D1</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/nico-removebg-preview.png" alt="Nicolas Lepoittevin" />
@@ -355,7 +353,7 @@ Copier
       <div class="membre-nom">Nicolas LEPOITTEVIN</div>
       <div class="membre-role">Capitaine – Équipe 4 - D2</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/fabrice-removebg-preview.png" alt="Fabrice Ayen" />
@@ -363,7 +361,7 @@ Copier
       <div class="membre-nom">Fabrice AYEN</div>
       <div class="membre-role">Capitaine – Équipe 5 - D3</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/hervé-removebg-preview.png" alt="Hervé Vignard" />
@@ -371,7 +369,7 @@ Copier
       <div class="membre-nom">Hervé VIGNARD</div>
       <div class="membre-role">Capitaine – Équipe 6 - D4</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/guillaume-removebg-preview.png" alt="Guillaume Ravet" />
@@ -379,7 +377,7 @@ Copier
       <div class="membre-nom">Guillaume RAVET</div>
       <div class="membre-role">Capitaine – Équipe 7 - D4</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/hong-removebg-preview.png" alt="Hong Ouray" />
@@ -387,7 +385,7 @@ Copier
       <div class="membre-nom">Hong OURAY</div>
       <div class="membre-role">Capitaine – Équipe 8 - D4/Vétéran/AR + JA1</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/simon-removebg-preview.png" alt="Simon Duret" />
@@ -395,7 +393,7 @@ Copier
       <div class="membre-nom">Simon DURET</div>
       <div class="membre-role">Capitaine – Équipe Jeunes - D2</div>
     </div>
- 
+
     <div class="membre-card">
       <div class="membre-photo">
         <img src="img/membres/ethan-removebg-preview.png" alt="Ethan Vignard" />
@@ -403,18 +401,19 @@ Copier
       <div class="membre-nom">Ethan VIGNARD</div>
       <div class="membre-role">Capitaine – Équipe Jeunes - D3</div>
     </div>
- 
+
   </div>
 </div>
- 
+
 <!-- BOUTON RETOUR -->
 <a href="index.html" class="back-btn">← Retour à l'accueil</a>
- 
+
 <!-- FOOTER -->
 <footer style="margin-top:4rem;">
+  <img src="img/Logo.png" alt="Logo ASTT Manduel" style="width:80px; margin-bottom:1rem; opacity:.8;" />
   <p>© 2025 <span>ASTT Manduel</span> – Association Sportive de Tennis de Table · Manduel, Gard · Affilié FFTT</p>
 </footer>
- 
+
 <script>
   document.querySelectorAll('.membre-photo img').forEach(img => {
     if (img.complete) {
@@ -423,7 +422,14 @@ Copier
       img.addEventListener('load', () => img.classList.add('loaded'));
     }
   });
+
+  function toggleMenu() {
+    const menu = document.getElementById('nav-menu');
+    const hamburger = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    hamburger.textContent = menu.classList.contains('open') ? '✕' : '☰';
+  }
 </script>
- 
+
 </body>
 </html>

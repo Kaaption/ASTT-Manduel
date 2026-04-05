@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
- 
+
     .calc-hero {
       padding-top: 70px;
       background: var(--green-pale);
@@ -16,20 +16,20 @@
       position: relative;
       overflow: hidden;
     }
- 
+
     .calc-hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background: radial-gradient(ellipse at 50% 0%, rgba(126,217,87,.4) 0%, transparent 70%);
     }
- 
+
     .calc-hero-inner {
       position: relative;
       z-index: 1;
       padding-top: 4rem;
     }
- 
+
     .calc-hero h1 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(3rem, 6vw, 5.5rem);
@@ -39,7 +39,7 @@
       animation: fadeUp .6s ease both;
     }
     .calc-hero h1 span { color: var(--green-mid); }
- 
+
     .calc-hero p {
       color: var(--muted);
       font-size: 1.05rem;
@@ -48,12 +48,12 @@
       line-height: 1.7;
       animation: fadeUp .6s .1s ease both;
     }
- 
+
     .calc-container {
       padding: 4rem 10%;
       background: var(--white);
     }
- 
+
     .calc-wrapper {
       max-width: 900px;
       margin: 0 auto;
@@ -63,7 +63,7 @@
       box-shadow: 0 10px 40px rgba(0,0,0,.07);
       border: 2px solid var(--green-pale);
     }
- 
+
     .back-btn {
       display: inline-flex;
       align-items: center;
@@ -80,15 +80,16 @@
       width: fit-content;
     }
     .back-btn:hover { background: var(--green-pale); transform: translateX(-4px); }
- 
+
   </style>
 </head>
 <body>
- 
+
 <!-- NAV -->
 <nav>
   <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ASTT <span>Manduel</span></a></div>
-  <ul>
+  <button class="hamburger" onclick="toggleMenu()" id="hamburger">☰</button>
+  <ul id="nav-menu">
     <li><a href="index.html#about">Le club</a></li>
     <li><a href="index.html#activites">Activités</a></li>
     <li><a href="index.html#horaires">Horaires</a></li>
@@ -98,7 +99,7 @@
     <li><a href="index.html#contact" class="nav-cta">Nous rejoindre</a></li>
   </ul>
 </nav>
- 
+
 <!-- HERO -->
 <div class="calc-hero">
   <div class="calc-hero-inner">
@@ -107,7 +108,7 @@
     <p>Simulez l'évolution de votre classement après vos matchs grâce à l'outil officiel de la Fédération Française de Tennis de Table.</p>
   </div>
 </div>
- 
+
 <!-- CALCULATEUR -->
 <div class="calc-container">
   <div class="calc-wrapper">
@@ -121,18 +122,27 @@
     </iframe>
   </div>
 </div>
- 
+
 <!-- BOUTON RETOUR -->
 <a href="index.html" class="back-btn">← Retour à l'accueil</a>
- 
+
 <!-- FOOTER -->
 <footer style="margin-top:4rem;">
+  <img src="img/Logo.png" alt="Logo ASTT Manduel" style="width:80px; margin-bottom:1rem; opacity:.8;" />
   <p>© 2025 <span>ASTT Manduel</span> – Association Sportive de Tennis de Table · Manduel, Gard · Affilié FFTT</p>
 </footer>
- 
+
 <script type="text/javascript" src="https://www.pongiste.fr/include/js/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.pongiste.fr/include/setIframeHeight-master/dist/set-iframe-height-parent.js"></script>
- 
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('nav-menu');
+    const hamburger = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    hamburger.textContent = menu.classList.contains('open') ? '✕' : '☰';
+  }
+</script>
+
 </body>
 </html>
- 
