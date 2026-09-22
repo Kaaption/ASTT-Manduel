@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Activités – ASTT Manduel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+
+    /* ── HERO ── */
+    .actu-hero {
+      padding-top: 70px;
+      background: var(--text);
+      text-align: center;
+      padding-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .actu-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(126,217,87,.15) 0%, transparent 70%);
+    }
+
+    .actu-hero-inner {
+      position: relative;
+      z-index: 1;
+      padding-top: 4rem;
+    }
+
+    .actu-hero .section-tag { color: var(--green-light); justify-content: center; display: flex; }
+
+    .actu-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 1rem;
+      color: white;
+      animation: fadeUp .6s ease both;
+    }
+    .actu-hero h1 span { color: var(--green-light); }
+
+    .actu-hero p {
+      color: rgba(255,255,255,.6);
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.7;
+      animation: fadeUp .6s .1s ease both;
+    }
+
+    /* ── CONTAINER ── */
+    .actu-container {
+      padding: 5rem 10%;
+      background: var(--gray);
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    /* ── FICHE ACTIVITÉ ── */
+    .actu-card {
+      background: var(--white);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,.07);
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .actu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.11);
+    }
+
+    /* Photos à gauche */
+    .actu-photos {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      min-height: 320px;
+      background: var(--green-pale);
+    }
+
+    .actu-photos.single {
+      grid-template-rows: 1fr;
+    }
+
+    .actu-photo {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .actu-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .actu-card:hover .actu-photo img { transform: scale(1.03); }
+
+    .actu-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      opacity: .2;
+      background: var(--green-pale);
+    }
+
+    /* Séparateur entre 2 photos */
+    .actu-photos:not(.single) .actu-photo:first-child {
+      border-bottom: 3px solid var(--gray);
+    }
+
+    /* Infos à droite */
+    .actu-info {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .actu-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .actu-date {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: var(--green-pale);
+      color: var(--green-dark);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+    }
+
+    .actu-badge {
+      display: inline-flex;
+      align-items: center;
+      background: var(--text);
+      color: white;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+    }
+
+    .actu-badge.tournoi { background: #f59e0b; color: white; }
+    .actu-badge.assemblee { background: var(--green-mid); color: white; }
+    .actu-badge.forum { background: #6366f1; color: white; }
+    .actu-badge.autre { background: var(--muted); color: white; }
+
+    .actu-nom {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      letter-spacing: 1.5px;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .actu-texte {
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.85;
+    }
+
+    /* Badge "La plus récente" */
+    .actu-card.recente {
+      border: 3px solid var(--green-light);
+    }
+
+    .recente-badge {
+      position: absolute;
+      top: 14px; left: 14px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 50px;
+      z-index: 2;
+    }
+
+    /* ── BOUTON RETOUR ── */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: .9rem;
+      padding: 10px 20px;
+      border: 2px solid var(--green-light);
+      border-radius: 50px;
+      transition: background .2s, transform .15s;
+      margin: 0 10% 3rem;
+      width: fit-content;
+    }
+    .back-btn:hover { background: var(--green-pale); transform: translateX(-4px); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .actu-card {
+        grid-template-columns: 1fr;
+      }
+      .actu-photos {
+        min-height: 220px;
+        grid-template-rows: 1fr;
+      }
+      .actu-photos:not(.single) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+      }
+      .actu-photos:not(.single) .actu-photo:first-child {
+        border-bottom: none;
+        border-right: 3px solid var(--gray);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ASTT <span>Manduel</span></a></div>
+  <button class="hamburger" onclick="toggleMenu()" id="hamburger">☰</button>
+  <ul id="nav-menu">
+    <li><a href="index.html#about">Le club</a></li>
+    <li><a href="index.html#activites">Activités</a></li>
+    <li><a href="index.html#horaires">Horaires</a></li>
+    <li><a href="membres.html">Membres</a></li>
+    <li><a href="calculateur.html">Calculateur</a></li>
+    <li><a href="boutique.html">Boutique</a></li>
+    <li><a href="activites.html" style="color:var(--green-mid);">Actualités</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Nous rejoindre</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="actu-hero">
+  <div class="actu-hero-inner">
+    <div class="section-tag">📰 Vie du club</div>
+    <h1>Actualités <span>ASTT</span><br>Manduel</h1>
+    <p>Retrouvez ici tous les événements, tournois et moments forts de notre club.</p>
+  </div>
+</div>
+
+<div class="actu-container">
+
+  <!-- ════════════════════════════════
+       FICHE 1 — LA PLUS RÉCENTE : FORUM DES ASSOCIATIONS
+       ════════════════════════════════ -->
+  <div class="actu-card recente" style="position:relative;">
+    <div class="recente-badge">🆕 Dernière actualité</div>
+
+    <div class="actu-photos single">
+  <div class="actu-photo">
+    <img src="img/activites/Forum 1.jpg" alt="Forum des associations 2026" />
+  </div>
+</div>
+
+    <div class="actu-info">
+      <div class="actu-meta">
+        <div class="actu-date">📅 05/09/2026</div>
+        <div class="actu-badge forum">🎪 Forum des associations</div>
+      </div>
+      <div class="actu-nom">Forum des Associations 2026</div>
+      <p class="actu-texte">
+        🏓 Une belle matinée des associations à Manduel !
+
+Ce samedi matin, notre association sportive de tennis de table était présente au rendez-vous des associations de Manduel.
+
+Une matinée conviviale qui nous a permis de présenter notre club, faire découvrir le tennis de table et échanger avec les Manduellois autour de notre passion.
+
+Nous avons eu le plaisir de rencontrer de nouveaux visages, de répondre aux questions et de partager notre envie de faire vivre et développer le tennis de table à Manduel, dans un esprit sportif, convivial et accessible à tous.
+
+👏 Un grand merci à toutes les personnes venues nous rencontrer, ainsi qu’aux bénévoles et aux organisateurs pour cette belle matinée.
+
+🏓 Vous souhaitez découvrir le tennis de table, reprendre une activité sportive ou simplement essayer ? Venez nous rejoindre !
+
+Notre club vous attend pour une nouvelle saison placée sous le signe du sport, du plaisir et de la convivialité !
+      </p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       FICHE 2 — ASSEMBLÉE GÉNÉRALE
+       ════════════════════════════════ -->
+  <div class="actu-card">
+
+    <div class="actu-photos">
+      <div class="actu-photo">
+        <img src="img/activites/AG 1.jpg" alt="Assemblée Générale" />
+      </div>
+      <div class="actu-photo">
+        <img src="img/activites/AG 2.jpg" alt="Assemblée Générale" />
+      </div>
+    </div>
+
+    <div class="actu-info">
+      <div class="actu-meta">
+        <div class="actu-date">📅 04/09/2026</div>
+        <div class="actu-badge assemblee">📋 Assemblée générale</div>
+      </div>
+      <div class="actu-nom">Assemblée Générale</div>
+      <p class="actu-texte">
+        Le vendredi 4 septembre a eu lieu l'assemblée générale du club.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+  <!-- ════════════════════════════════
+       MODÈLE À COPIER pour ajouter une fiche
+       ════════════════════════════════ -->
+  <!--
+  <div class="actu-card">
+    <div class="actu-photos single">   ← "single" si 1 photo, supprimer "single" si 2 photos
+      <div class="actu-photo">
+        <img src="img/activites/NOMDUFICHIER.jpg" alt="Description" />
+      </div>
+    </div>
+    <div class="actu-info">
+      <div class="actu-meta">
+        <div class="actu-date">📅 JJ mois AAAA</div>
+        <div class="actu-badge tournoi">🏆 Tournoi</div>         ← tournoi / assemblee / forum / autre
+      </div>
+      <div class="actu-nom">Nom de l'événement</div>
+      <p class="actu-texte">Description de l'événement...</p>
+    </div>
+  </div>
+  -->
+
+</div>
+
+<!-- BOUTON RETOUR -->
+<a href="index.html" class="back-btn">← Retour à l'accueil</a>
+
+<!-- FOOTER -->
+<footer style="margin-top:4rem;">
+  <img src="img/Logo.png" alt="Logo ASTT Manduel" style="width:80px; margin-bottom:1rem; opacity:.8;" />
+  <p>© 2025 <span>ASTT Manduel</span> – Association Sportive de Tennis de Table · Manduel, Gard · Affilié FFTT</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('nav-menu');
+    const hamburger = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    hamburger.textContent = menu.classList.contains('open') ? '✕' : '☰';
+  }
+</script>
+
+</body>
+</html>
