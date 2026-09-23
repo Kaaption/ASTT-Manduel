@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Résultats – ASTT Manduel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+
+    /* ── HERO ── */
+    .resultats-hero {
+      padding-top: 70px;
+      background: var(--text);
+      text-align: center;
+      padding-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .resultats-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(126,217,87,.15) 0%, transparent 70%);
+    }
+
+    .resultats-hero-inner {
+      position: relative;
+      z-index: 1;
+      padding-top: 4rem;
+    }
+
+    .resultats-hero .section-tag { color: var(--green-light); justify-content: center; display: flex; }
+
+    .resultats-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 1rem;
+      color: white;
+      animation: fadeUp .6s ease both;
+    }
+    .resultats-hero h1 span { color: var(--green-light); }
+
+    .resultats-hero p {
+      color: rgba(255,255,255,.6);
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.7;
+      animation: fadeUp .6s .1s ease both;
+    }
+
+    /* ── CONTAINER ── */
+    .resultats-container {
+      padding: 5rem 10%;
+      background: var(--gray);
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    /* ── CARTE JOURNÉE ── */
+    .journee-card {
+      background: var(--white);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,.07);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .journee-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.11);
+    }
+
+    .journee-card.recente {
+      border: 3px solid var(--green-light);
+    }
+
+    /* ── HEADER JOURNÉE ── */
+    .journee-header {
+      background: var(--text);
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .journee-titre {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 1.5px;
+      color: white;
+    }
+    .journee-titre span { color: var(--green-light); }
+
+    .journee-date {
+      background: var(--green-pale);
+      color: var(--green-dark);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 50px;
+    }
+
+    .recente-badge {
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+
+    /* ── TABLEAU DES SCORES ── */
+    .scores-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .95rem;
+    }
+
+    .scores-table thead tr {
+      background: var(--green-pale);
+    }
+
+    .scores-table thead th {
+      padding: .75rem 1.5rem;
+      text-align: left;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--green-dark);
+    }
+
+    .scores-table thead th:last-child { text-align: center; }
+
+    .scores-table tbody tr {
+      border-bottom: 1px solid #f0f0f0;
+      transition: background .15s;
+    }
+    .scores-table tbody tr:last-child { border-bottom: none; }
+    .scores-table tbody tr:hover { background: var(--gray); }
+
+    .scores-table td {
+      padding: 1rem 1.5rem;
+      vertical-align: middle;
+    }
+
+    .equipe-nom {
+      font-weight: 700;
+      color: var(--text);
+      font-size: .88rem;
+    }
+
+    .score-cell {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .score-vs {
+      color: var(--muted);
+      font-size: 1rem;
+      margin: 0 .3rem;
+    }
+
+    .adversaire-nom {
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    /* Résultat badge */
+    .resultat-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+
+    .resultat-badge.victoire {
+      background: #dcfce7;
+      color: #15803d;
+    }
+    .resultat-badge.defaite {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+    .resultat-badge.nul {
+      background: #fef9c3;
+      color: #854d0e;
+    }
+
+    .resultat-cell { text-align: center; width: 130px; }
+
+    /* ── GRILLE PHOTOS ── */
+    .photos-grid {
+      padding: 1.5rem 2rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: .75rem;
+      background: var(--gray);
+    }
+
+    .photos-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform .3s ease, box-shadow .3s;
+      cursor: pointer;
+    }
+    .photos-grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 24px rgba(0,0,0,.15);
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.9);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 28px;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+
+    /* ── BOUTON RETOUR ── */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: .9rem;
+      padding: 10px 20px;
+      border: 2px solid var(--green-light);
+      border-radius: 50px;
+      transition: background .2s, transform .15s;
+      margin: 0 10% 3rem;
+      width: fit-content;
+    }
+    .back-btn:hover { background: var(--green-pale); transform: translateX(-4px); }
+
+    @media (max-width: 900px) {
+      .journee-header { flex-direction: column; align-items: flex-start; }
+      .scores-table thead th:nth-child(3),
+      .scores-table td:nth-child(3) { display: none; }
+      .photos-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">ASTT <span>Manduel</span></a></div>
+  <button class="hamburger" onclick="toggleMenu()" id="hamburger">☰</button>
+  <ul id="nav-menu">
+    <li><a href="membres.html">Membres</a></li>
+    <li><a href="calculateur.html">Calculateur</a></li>
+    <li><a href="boutique.html">Boutique</a></li>
+    <li><a href="activites.html">Actualités</a></li>
+    <li><a href="resultats.html" style="color:var(--green-mid);">Résultats</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Nous rejoindre</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="resultats-hero">
+  <div class="resultats-hero-inner">
+    <div class="section-tag">🏓 Saison 2025–26</div>
+    <h1>Résultats <span>ASTT</span><br>Manduel</h1>
+    <p>Retrouvez ici tous les résultats de nos 7 équipes, journée par journée.</p>
+  </div>
+</div>
+
+<!-- JOURNÉES -->
+<div class="resultats-container">
+
+  <!-- ════════════════════════════════
+       JOURNÉE LA PLUS RÉCENTE — À mettre en 1er
+       ════════════════════════════════ -->
+  <div class="journee-card recente">
+    <div class="journee-header">
+      <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+        <div class="journee-titre">Journée <span>N°1</span></div>
+        <div class="recente-badge">🆕 Dernière journée</div>
+      </div>
+      <div class="journee-date">📅 20 Septembre 2026</div>
+    </div>
+
+    <table class="scores-table">
+      <thead>
+        <tr>
+          <th>Équipe</th>
+          <th>Score</th>
+          <th>Adversaire</th>
+          <th>Résultat</th>
+        </tr>
+      </thead>
+      <tbody>
+  <tr>
+    <td><div class="equipe-nom">Équipe 1 – R3</div></td>
+    <td><div class="score-cell">3 <span class="score-vs">–</span> 11</div></td>
+    <td><div class="adversaire-nom">Uchaud 3</div></td>
+    <td class="resultat-cell"><span class="resultat-badge defaite">❌ Défaite</span></td>
+  </tr>
+  <tr>
+    <td><div class="equipe-nom">Équipe 2 – D1</div></td>
+    <td><div class="score-cell">11 <span class="score-vs">–</span> 3</div></td>
+    <td><div class="adversaire-nom">St Christol 3</div></td>
+    <td class="resultat-cell"><span class="resultat-badge victoire">✅ Victoire</span></td>
+  </tr>
+  <tr>
+    <td><div class="equipe-nom">Équipe 3 – D1</div></td>
+    <td><div class="score-cell">11 <span class="score-vs">–</span> 3</div></td>
+    <td><div class="adversaire-nom">Congénies 3</div></td>
+    <td class="resultat-cell"><span class="resultat-badge victoire">✅ Victoire</span></td>
+  </tr>
+  <tr>
+    <td><div class="equipe-nom">Équipe 4 – D2</div></td>
+    <td><div class="score-cell">6 <span class="score-vs">–</span> 8</div></td>
+    <td><div class="adversaire-nom">ASPC 7</div></td>
+    <td class="resultat-cell"><span class="resultat-badge defaite">❌ Défaite</span></td>
+  </tr>
+  <tr>
+    <td><div class="equipe-nom">Équipe 5 – D3</div></td>
+    <td><div class="score-cell">7 <span class="score-vs">–</span> 7</div></td>
+    <td><div class="adversaire-nom">Vauvert 2</div></td>
+    <td class="resultat-cell"><span class="resultat-badge nul">🟡 Nul</span></td>
+  </tr>
+  <tr>
+    <td><div class="equipe-nom">Équipe 6 – D4</div></td>
+    <td><div class="score-cell">– <span class="score-vs"></span> –</div></td>
+    <td><div class="adversaire-nom">Exempt</div></td>
+    <td class="resultat-cell"><span class="resultat-badge nul">⚪ Exempt</span></td>
+  </tr>
+  <tr>
+    <td><div class="equipe-nom">Équipe 7 – D4</div></td>
+    <td><div class="score-cell">2 <span class="score-vs">–</span> 12</div></td>
+    <td><div class="adversaire-nom">Cruviers 3</div></td>
+    <td class="resultat-cell"><span class="resultat-badge defaite">❌ Défaite</span></td>
+  </tr>
+</tbody>
+    </table>
+
+    <!-- Photos — ajoute autant de <img> que tu veux (3 à 7) -->
+    <div class="photos-grid">
+      <img src="img/resultats/J1E2.jpg" alt="Photo journée" onclick="openLightbox(this.src)" />
+      <img src="img/resultats/J1E3.jpg" alt="Photo journée" onclick="openLightbox(this.src)" />
+      <img src="img/resultats/J1E4.jpg" alt="Photo journée" onclick="openLightbox(this.src)" />
+      <img src="img/resultats/J1E5.jpg" alt="Photo journée" onclick="openLightbox(this.src)" />
+      <img src="img/resultats/J1E7.jpg" alt="Photo journée" onclick="openLightbox(this.src)" />
+      <!-- Ajoute ou supprime des lignes <img> selon le nombre de photos -->
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       MODÈLE À COPIER pour ajouter une journée
+       (colle-le AVANT la journée précédente)
+       ════════════════════════════════ -->
+  <!--
+  <div class="journee-card recente">
+    <div class="journee-header">
+      <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+        <div class="journee-titre">Journée <span>N°X</span></div>
+        <div class="recente-badge">🆕 Dernière journée</div>
+      </div>
+      <div class="journee-date">📅 JJ mois AAAA</div>
+    </div>
+
+    <table class="scores-table">
+      <thead>
+        <tr>
+          <th>Équipe</th>
+          <th>Score</th>
+          <th>Adversaire</th>
+          <th>Résultat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="equipe-nom">Équipe 1 – R3</div></td>
+          <td><div class="score-cell">X <span class="score-vs">–</span> X</div></td>
+          <td><div class="adversaire-nom">Adversaire</div></td>
+          <td class="resultat-cell"><span class="resultat-badge victoire">✅ Victoire</span></td>
+        </tr>
+        ... répète pour chaque équipe ...
+      </tbody>
+    </table>
+
+    <div class="photos-grid">
+      <img src="img/resultats/jX-photo1.jpg" alt="Photo" onclick="openLightbox(this.src)" />
+      ... ajoute autant de photos que tu veux ...
+    </div>
+  </div>
+  -->
+
+  <!-- ════════════════════════════════
+       QUAND TU AJOUTES UNE NOUVELLE JOURNÉE :
+       1. Copie le modèle ci-dessus
+       2. Colle-le AVANT cette journée (en haut du container)
+       3. Sur l'ancienne journée, enlève "recente" de la classe
+          et supprime le div class="recente-badge"
+       ════════════════════════════════ -->
+
+</div>
+
+<!-- BOUTON RETOUR -->
+<a href="index.html" class="back-btn">← Retour à l'accueil</a>
+
+<!-- FOOTER -->
+<footer style="margin-top:4rem;">
+  <img src="img/Logo.png" alt="Logo ASTT Manduel" style="width:80px; margin-bottom:1rem; opacity:.8;" />
+  <p>© 2025 <span>ASTT Manduel</span> – Association Sportive de Tennis de Table · Manduel, Gard · Affilié FFTT</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('nav-menu');
+    const hamburger = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    hamburger.textContent = menu.classList.contains('open') ? '✕' : '☰';
+  }
+
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+</body>
+</html>
