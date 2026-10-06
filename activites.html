@@ -85,6 +85,11 @@
       background: var(--green-pale);
     }
 
+    .actu-photos.cote-a-cote {
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr;
+    }
+
     .actu-photos.single {
       grid-template-rows: 1fr;
     }
@@ -267,11 +272,36 @@
 
 <div class="actu-container">
 
+  <div class="actu-card recente" style="position:relative;">
+  <div class="recente-badge">🆕 Dernière actualité</div>
+
+  <div class="actu-photos cote-a-cote">
+  <div class="actu-photo">
+    <img src="img/activites/medaille-amandine-1.jpg" alt="Médaille du mérite Amandine" />
+  </div>
+  <div class="actu-photo">
+    <img src="img/activites/medaille-amandine-2.jpg" alt="Médaille du mérite Amandine" />
+  </div>
+</div>
+
+  <div class="actu-info">
+    <div class="actu-meta">
+      <div class="actu-date">📅 04/10/2026</div>
+      <div class="actu-badge autre">🏅 Distinction</div>
+    </div>
+    <div class="actu-nom">Médaille du mérite pour Amandine</div>
+    <p class="actu-texte">
+      Une belle récompense pour Amandine (secrétaire du club) qui a reçu la médaille du mérite par le comité du Gard de tennis de table.<br><br>
+      Cette récompense met en lumière la belle personne qu'est Amandine dont l'engagement et le dévouement font la force de notre club.<br><br>
+      Félicitations Amandine, cette médaille est amplement méritée. 🎉
+    </p>
+  </div>
+</div>
+
   <!-- ════════════════════════════════
        FICHE 1 — LA PLUS RÉCENTE : FORUM DES ASSOCIATIONS
        ════════════════════════════════ -->
   <div class="actu-card recente" style="position:relative;">
-    <div class="recente-badge">🆕 Dernière actualité</div>
 
     <div class="actu-photos single">
   <div class="actu-photo">
